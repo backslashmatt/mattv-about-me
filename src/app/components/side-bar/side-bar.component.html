@@ -1,0 +1,7 @@
+<div class="h-full px-3 py-4 overflow-y-auto">
+  <ul class="space-y-2 font-medium">
+    <li *ngFor="let route of routes" [routerLink]="route.path">
+      {{route.name}}
+    </li>
+  </ul>
+</div>
