@@ -1,0 +1,11 @@
+identifier: l9l359u046cedfn0
+appPort: 1864
+staticPort: 1668
+reloadPort: 2667
+hostName: localhost
+projectName: about-me
+homeFolder: D:\SC\mattv-about-me
+distFolder: ./dist/about-me
+outDir: D:\SC\mattv-about-me\dist\static
+handle404: ''
+allowErrorCollect: true

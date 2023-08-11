@@ -1,0 +1,9 @@
+<main class="relative h-screen md:flex md:overflow-hidden">
+  <aside
+      class="z-10 bg-teal-600 text-gray-100 w-80 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
+    <app-side-bar></app-side-bar>
+  </aside>
+  <div class="container mx-auto">
+    <router-outlet></router-outlet>
+  </div>
+</main>
