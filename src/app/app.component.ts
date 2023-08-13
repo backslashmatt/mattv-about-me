@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router, RouterModule } from '@angular/router';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 @Component({
@@ -10,6 +11,17 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
   imports: [CommonModule, RouterModule, SideBarComponent],
   standalone: true
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  router = inject(Router)
   title = 'about-me';
+  isMenuClosed = true;
+  routeEvents$ = this.router.events.pipe(takeUntilDestroyed());
+
+  public ngOnInit() {
+    this.routeEvents$.subscribe(() => { this.isMenuClosed = true; });
+  }
+
+  public toggleMenu() {
+    this.isMenuClosed = !this.isMenuClosed;
+  }
 }

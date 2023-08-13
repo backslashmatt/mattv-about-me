@@ -1,7 +1,12 @@
 <div class="h-full px-3 py-4 overflow-y-auto">
-  <ul class="space-y-2 font-medium">
-    <li *ngFor="let route of routes" [routerLink]="route.path">
+  <hr/>
+  <ul class="mt-4 mb-4 space-y-3 font-medium">
+    <li class="py-2 5 px-4 flex hover:bg-slate-600 rounded space-x-2 cursor-pointer"
+        *ngFor="let route of routes" [routerLink]="route.path" [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active-link">
       {{route.name}}
     </li>
   </ul>
+  <hr/>
+  <app-social-links></app-social-links>
 </div>
