@@ -1,8 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@layer components {
-  .active-link {
-    @apply bg-slate-600;
-  }
+.active-link {
+  @apply bg-slate-600;
 }
+
