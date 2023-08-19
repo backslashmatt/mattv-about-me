@@ -1,11 +1,24 @@
-<div class=" mt-6 md:mt-12">
-  <h1 class="text-slate-800 text-7xl text-center mb-5">Welcome, I'm Matt Verry</h1>
-  <div class="pr-64 pl-64 mb-5">
-    <hr class=""/>
+<div class="mt-6 md:mt-12">
+  <h1 class="text-slate-800 md:text-5xl lg:max-3xl:text-7xl text-4xl text-center mb-5">Welcome, I'm Matt Verry</h1>
+  <div class="pr-6 pl-6 lg:max-3xl:pr-32 lg:max-3xl:pl-32 mb-5">
+    <hr class="border-t-2"/>
   </div>
-  <div class="flex justify-center">
-    <img class="rounded" [width]="330" [height]="388"
-         ngSrc="https://lh3.googleusercontent.com/u/0/drive-viewer/AITFw-zEl4OCkwYy3WI9UZxw2NXY_6dNPEH9HG9Y5mYSh9NfH83hHpbdLLdZK_thLv3pq7UGNn4qEwpNKYj9zRi-AbzTYU9W-w=w3840-h1972"
-         alt="Test"/>
+  <div class="flex max-3xl:flex-row max-md:flex-col p-2">
+    <div class="flex-initial pb-16 ps-10 h-full lg:max-3xl:w-1/3 max-md:flex-grow shadow rounded drop-shadow-lg mb-5">
+      <h3 class="text-slate-800 text-4xl font-bold pb-8 mb-2">About Me</h3>
+      <p class="title">Name:</p>
+      <p class="content">Matthew Verry</p>
+      <p class="title">Age:</p>
+      <p class="content">{{ age }}</p>
+      <p class="title">Location:</p>
+      <p class="content">Phoenix, AZ</p>
+    </div>
+    <div class="lg:max-3xl:ps-10 w-50 mb-5">
+      <img class="rounded shadow-xl" [width]="330" [height]="388" priority="true"
+           ngSrc="assets/MattV.jpg"
+           alt="A Picture Of Me"/>
+    </div>
+    <div class="flex-initial pb-16 ps-10 h-full flex-grow mb-3"><h3 class="text-slate-800 text-4xl font-bold">Details</h3>
+    </div>
   </div>
 </div>
