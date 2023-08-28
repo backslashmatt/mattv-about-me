@@ -1,11 +1,17 @@
-import { ScullyConfig } from "@scullyio/scully";
+import { ScullyConfig, setPluginConfig } from "@scullyio/scully";
+
+import "@scullyio/scully-plugin-puppeteer";
+setPluginConfig('md', { enableSyntaxHighlighting: true });
+
+import { getHttp404Plugin } from '@gammastream/scully-plugin-http404';
+const Http404Plugin = getHttp404Plugin();
 
 export const config: ScullyConfig = {
   projectRoot: "./src",
   projectName: "about-me",
   distFolder: "./dist/about-me", // output directory of your Angular build artifacts
   outDir: "./dist/static", // directory for scully build artifacts
-  defaultPostRenderers: [],
+  defaultPostRenderers: [Http404Plugin],
   routes: {
     '/blog/:slug': {
       type: 'contentFolder',
