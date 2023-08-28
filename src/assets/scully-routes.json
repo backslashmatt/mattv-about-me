@@ -1,1 +1,1 @@
-[{"route":"/blog/test","title":"Markdown test","description":"This is a sample post containing different types of markdown content to test","date":"Tue Aug 23 2022","tags":["Markdown"],"published":true,"sourceFile":"test.md"},{"route":"/blog"},{"route":"/"}]
+[{"route":"/contact"},{"route":"/about"},{"route":"/blog/test","title":"Markdown test","description":"This is a sample post containing different types of markdown content to test","date":"Tue Aug 23 2022","tags":["Markdown"],"published":true,"sourceFile":"test.md"},{"route":"/blog"},{"route":"/"}]
