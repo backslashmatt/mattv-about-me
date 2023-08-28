@@ -1,4 +1,4 @@
-<a class="cursor-pointer border-2 hover:bg-slate-600 rounded-full p-2" (click)="openLink('https://mstdn.social/@mattv')">
+<a [ngClass]="{ 'text-teal-600': isPrimary, 'border-teal-600 ': isPrimary }" class="cursor-pointer border-2 rounded-full p-2 hover:bg-slate-600" (click)="openLink('https://mstdn.social/@mattv')">
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mastodon"
        viewBox="0 0 16 16">
     <path
