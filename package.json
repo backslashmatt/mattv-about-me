@@ -10,7 +10,7 @@
     "test": "ng test",
     "scully": "scully",
     "scully:serve": "scully serve",
-    "build:ci": "npm run build:prod && npm run scully:ci"
+    "build:ci": "npm run build:prod && npm run scully:ci",
     "scully:ci": "scully -- --host='0.0.0.0' --scanRoutes --serverTimeout=60000"
   },
   "private": true,
