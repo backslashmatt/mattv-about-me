@@ -1,27 +1,33 @@
-# AboutMe
+# Personal site made with Scully, Tailwind and ng16
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
+This project is my personal site, which contains my blog. It was made with [Scully](https://scully.io/), [Tailwind](https://tailwindcss.com/docs/installation) and Angular v16.
+Inspired and based on [Nelson's blog](https://github.com/nelsongutidev)
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To run the angular app, run `ng serve`. App will be served on port:4200.
 
-## Code scaffolding
+## Scully server
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To run the scully server locally, do the following:
 
-## Build
+1. `ng build`
+2. `npm run scully`
+3. `npm run scully:serve`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Visit port 1668
 
-## Running unit tests
+Any change on the angular app needs a new ng build for the scully server to pick up.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Changes to Blog page
 
-## Running end-to-end tests
+If you create a new .md file or updated it, make sure you run `npm run scully -- --scanRoutes` so that scully can find the new routes and add them.
+Or run `npm run build:ci`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Can I use this project
 
-## Further help
+Feel free to use this code. Create your own blog, or your own site and style it however you like and ship it 🚀. Just try to make it your own 😉.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Angular CLI Explorer
+
+This project contains an Angular CLI Explorer, which constructs the desired CLI command after selecting from the available options
