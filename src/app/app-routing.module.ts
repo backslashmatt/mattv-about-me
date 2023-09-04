@@ -1,16 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PlaygroundComponent } from './components/playground/playground.component';
 import { AboutMeComponent } from './pages/about-me/about-me.component';
 import { BlogListComponent } from './pages/blog-list/blog-list.component';
 import { BlogComponent } from './pages/blog/blog.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [{
-  path: 'contact',
-  component: ContactComponent,
-  title: 'Contact Me'
-}, {
   path: 'about',
   component: AboutMeComponent,
   title: 'About Me'
@@ -23,8 +18,10 @@ const routes: Routes = [{
   title: 'Blog'
 }, {
   path: '',
-  component: HomeComponent,
-  title: 'Home'
+  component: AboutMeComponent,
+}, {
+  path: 'playground',
+  component: PlaygroundComponent,
 }];
 
 @NgModule({
