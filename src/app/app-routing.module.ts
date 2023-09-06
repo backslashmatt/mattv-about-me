@@ -18,7 +18,8 @@ const routes: Routes = [{
   title: 'Blog'
 }, {
   path: '',
-  component: AboutMeComponent,
+  redirectTo: 'about',
+  pathMatch: 'full',
 }, {
   path: 'playground',
   component: PlaygroundComponent,
