@@ -10,7 +10,7 @@ published: true
 
 # Take Until Destroyed
 
-On of my favorite new additions to angular is the new rxjs 'takeUntilDestroyed' operator.
+One of my favorite new additions to angular is the new rxjs 'takeUntilDestroyed' operator.
 This operator is a simple way to unsubscribe from observables when a component is destroyed. The reason I am so very
 excited about this operator is because of the pattern here:
 
