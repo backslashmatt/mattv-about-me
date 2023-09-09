@@ -1,7 +1,7 @@
 ---
 title: 'Take Until Destroyed'
 description: 'Unsubscribing from observables from components'
-date: 'Sun Sept 9th 2023'
+date: 'Sun Sep 9 2023'
 tags:
     - RxJS
     - Angular v16

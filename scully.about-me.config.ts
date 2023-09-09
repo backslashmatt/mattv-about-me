@@ -1,4 +1,7 @@
-import { enableSPS, ScullyConfig, setPluginConfig } from "@scullyio/scully";
+import { ScullyConfig, setPluginConfig } from "@scullyio/scully";
+
+import 'prismjs/components/prism-java.js';
+import 'prismjs/components/prism-bash';
 
 import "@scullyio/scully-plugin-puppeteer";
 setPluginConfig('md', { enableSyntaxHighlighting: true });

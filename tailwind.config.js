@@ -1,8 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: 'jit',
-  purge: { content: ['./src/**/*.{html,ts}'] },
-  content: [],
+  content: ["./src/**/*.{html,ts}"],
   theme: {
     screens: {
       'sm': '640px',
@@ -23,8 +22,26 @@ module.exports = {
       '3xl': '2000px',
       // => @media (min-width: 1536px) { ... }
     },
-    extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            code: {
+              color: "#333",
+
+              "@apply bg-gray-50 text-gray-700": "",
+            },
+            "code::before": {
+              content: '""',
+            },
+            "code::after": {
+              content: '""',
+            },
+          },
+        },
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 }
 
