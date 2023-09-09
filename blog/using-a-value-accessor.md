@@ -56,7 +56,7 @@ some sort of version of this.
 
 The problem with this pattern, in my opinion, is with a team of N developers you will almost certainly have many times
 when such things get missed. You could mitigate this by adding linting rules such as this one
-[RxJS Angular | https://github.com/cartant/eslint-plugin-rxjs-angular/blob/main/docs/rules/prefer-takeuntil.md].
+[RxJS Angular EsLint](https://github.com/cartant/eslint-plugin-rxjs-angular/blob/main/docs/rules/prefer-takeuntil.md).
 That method is very brute force though. Like in the example above, technically async pipe handles the unsubscribe on component destroy for you.
 So this file would likely fail linting but all observables would be unsubscribed from.
 
