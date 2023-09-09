@@ -60,7 +60,7 @@ when such things get missed. You could mitigate this by adding linting rules suc
 That method is very brute force though. Like in the example above, technically async pipe handles the unsubscribe on component destroy for you.
 So this file would likely fail linting but all observables would be unsubscribed from.
 
-Basically, through all this we will likely have unneeded `takeUntil`s and if you don't lint missed `takeUntil`s.
+Basically, through all this we will likely have unneeded `takeUntil`s and, if you don't lint, missed `takeUntil`s.
 So you just rely on the PR process and that's good enough.
 
 ## A step in the right direction
