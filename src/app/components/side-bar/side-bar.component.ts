@@ -11,5 +11,5 @@ import { SocialLinksComponent } from '../social-links/social-links.component';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
-  routes = [{ path: 'blog', name: 'Blog' }, { path: 'about', name: 'About' }, { path: 'contact', name: 'Contact' }];
+  routes = [{ path: 'blog', name: 'Blog' }, { path: 'about', name: 'About' }];
 }

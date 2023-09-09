@@ -1,3 +1,38 @@
-<div>
-  <img [width]="100" [height]="100" ngSrc="https://drive.google.com/file/d/1ZOFH69o9gpfDS8ri2bC4OG4js5jff-De/view?usp=drive_link" alt="Test"/>
+<div class="mt-6 md:mt-12">
+  <h1 class="text-slate-800 md:text-5xl lg:max-3xl:text-7xl text-4xl text-center mb-5">Welcome, I'm Matt Verry</h1>
+  <div class="pr-6 pl-6 lg:max-3xl:pr-32 lg:max-3xl:pl-32 mb-5">
+    <hr class="border-t-2"/>
+  </div>
+  <div class="flex max-3xl:flex-row max-lg:flex-col p-2 justify-center 3xl:ms-56 3xl:me-56">
+    <div class="flex-initial pb-2 max-sm:ps-0 ps-10 h-full w-1/3">
+      <h3 class="text-slate-800 text-4xl font-bold pb-8 mb-2">About Me</h3>
+      <p class="title">Name:</p>
+      <p class="content">Matthew Verry</p>
+      <p class="title">Age:</p>
+      <p class="content">{{ age }}</p>
+      <p class="title">Location:</p>
+      <p class="content">Phoenix, AZ</p>
+      <app-social-links [isPrimary]="true"></app-social-links>
+    </div>
+    <div class="flex max-md:ps-0 ps-10 w-50 mb-5 max-md:justify-center min-w-max max-h-full h-full">
+      <img class="rounded shadow-xl" [width]="330" [height]="388" priority="true"
+           ngSrc="assets/MattV.jpg"
+           alt="A Picture Of Matt Verry"/>
+    </div>
+    <div class="flex-initial max-sm:ps-0 ps-10 pb-16 h-full flex-grow mb-3 max-h-full me-5 max-w-xl">
+      <h3 class="text-slate-800 text-4xl font-bold mb-2">Details</h3>
+      <p class="content">
+        I'm a seasoned Full Stack .NET Developer specializing in Angular, adept at crafting top-notch web solutions.
+        With extensive Angular proficiency,
+        I create dynamic user interfaces and excel in SPAs. My .NET mastery ensures robust back-end systems, efficient
+        APIs, data security, and Infrastructure as Code. I've driven complex app development, optimized performance, and collaborated seamlessly in Agile setups.
+      </p>
+      <p class="content">
+        Passionate about staying current, I mentor peers and proactively contribute to the dev community.
+        Meticulous, adaptable, and a strong communicator further
+        enhancing my ability to design, deploy, and manage scalable and efficient applications.
+        I'm poised to elevate projects with my technical finesse and collaborative prowess.
+      </p>
+    </div>
+  </div>
 </div>
