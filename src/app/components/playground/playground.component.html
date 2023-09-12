@@ -3,3 +3,23 @@
     <li *ngFor="let customer of customers">{{customer.name}}</li>
   </ul>
 </div>
+<form [formGroup]="form">
+  <fieldset class="flex flex-col w-1/6">
+    <label for="name">Name</label>
+    <input id="name" class="border border-gray-300 rounded" type="text" formControlName="name">
+  </fieldset>
+  <fieldset class="flex flex-col w-1/6">
+    <label for="type">Type</label>
+    <select class="border border-gray-300 rounded" id="type" formControlName="type">
+      <option [ngValue]="null">Select Value</option>
+      <option *ngFor="let customerType of customerTypes | keyvalue "
+              [ngValue]="customerType.key">{{customerType.value}}</option>
+    </select>
+  </fieldset>
+  <fieldset class="flex flex-col w-1/6" *ngIf="formTypeSignal() === customerTypes.Business">
+    <label for="optionalEIN">Optional EIN</label>
+    <input id="optionalEIN" class="border border-gray-300 rounded" type="text" formControlName="optionalEIN"/>
+    <span *ngIf="form.controls.optionalEIN.touched && form.controls.optionalEIN.hasError('required')" class="text-red-500">Required</span>
+  </fieldset>
+  <button class="flex border border-teal-600 rounded p-2 hover:bg-teal-500 disabled:bg-gray-400 cursor-not-allowed m-5" [disabled]="!form.valid">Submit {{form.valid ? 'Enabled!' : 'Disabled'}}</button>
+</form>
