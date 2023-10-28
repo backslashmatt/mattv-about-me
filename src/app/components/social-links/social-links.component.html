@@ -1,2 +1,6 @@
-<a class="flex justify-center" [ngClass]="{ 'text-teal-600': isPrimary, 'border-teal-600 ': isPrimary }" *ngFor="let link of links"  (click)="openLink(link.url)"
-><span class="flex" [class]="link.icon"></span></a>
+<span class="flex justify-center ml-4 space-x-1">
+  <a [ngClass]="{ 'text-teal-600': isPrimary, 'border-teal-600 ': isPrimary }"
+     *ngFor="let link of links" (click)="openLink(link.url)">
+    <span class="flex" [class]="link.icon"></span>
+  </a>
+</span>
