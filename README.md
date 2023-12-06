@@ -30,4 +30,4 @@ Feel free to use this code. Create your own blog, or your own site and style it 
 
 ## Angular CLI Explorer
 
-This project contains an Angular CLI Explorer, which constructs the desired CLI command after selecting from the available options
+This project contains an Angular CLI Explorer, which constructs the desired CLI command after selecting from the available options.
