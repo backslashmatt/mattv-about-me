@@ -29,9 +29,17 @@ export class SocialLinksComponent {
     name: 'Mastodon',
     url: 'https://mstdn.social/@mattv',
     icon: 'bi bi-mastodon',
+  }, {
+    name: 'email',
+    url: 'matthew.verry@lyraapps.com',
+    icon: 'bi bi-envelope',
+    type: 'email',
   }];
 
-  openLink(link: string) {
+  openLink(link: string, type: string | undefined) {
+    if (type === 'email') {
+      return;
+    }
     window.open(link, '_blank');
   }
 }
