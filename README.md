@@ -1,6 +1,6 @@
 # Personal site made with Scully, Tailwind and ng16
 
-This project is my personal site, which contains my blog. It was made with [Scully](https://scully.io/), [Tailwind](https://tailwindcss.com/docs/installation) and Angular v16.
+This project is my personal site, which contains my blog. It was made with [Scully](https://scully.io/), [Tailwind](https://tailwindcss.com/docs/installation) and Angular v17.
 Inspired and based on [Nelson's blog](https://github.com/nelsongutidev)
 
 ## Development server
