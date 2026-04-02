@@ -54,7 +54,7 @@ interface PostAttributes {
 })
 export default class BlogListPageComponent {
   posts = injectContentFiles<PostAttributes>((file) =>
-    file.filename.includes('/src/content/blog/')
+    file.filename.includes('src/content/blog/')
   )
     .filter((post) => post.attributes.published)
     .sort((a, b) => new Date(b.attributes.date).getTime() - new Date(a.attributes.date).getTime());
