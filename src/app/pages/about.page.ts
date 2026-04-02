@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SocialLinksComponent } from '../components/social-links/social-links.component';
 
-export default @Component({
+@Component({
   standalone: true,
   imports: [SocialLinksComponent],
   template: `
@@ -55,7 +55,7 @@ export default @Component({
     </div>
   `,
 })
-class AboutPageComponent {
+export default class AboutPageComponent {
   skills = [
     'Angular', 'C# / .NET', 'TypeScript',
     'Azure', 'SQL Server', 'REST APIs',

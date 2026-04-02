@@ -12,7 +12,9 @@ export default defineConfig({
   plugins: [
     analog({
       ssr: false,
-      static: true,
+      prerender: {
+        routes: [],
+      },
       content: {
         highlighter: 'prism',
         prismOptions: {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-export default @Component({
+@Component({
   standalone: true,
   imports: [RouterLink],
   template: `
@@ -56,7 +56,7 @@ export default @Component({
     </section>
   `,
 })
-class HomePageComponent {
+export default class HomePageComponent {
   skills = [
     {
       emoji: '///',

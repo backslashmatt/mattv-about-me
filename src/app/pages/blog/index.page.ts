@@ -12,7 +12,7 @@ interface PostAttributes {
   slug: string;
 }
 
-export default @Component({
+@Component({
   standalone: true,
   imports: [RouterLink, DatePipe],
   template: `
@@ -52,7 +52,7 @@ export default @Component({
     </div>
   `,
 })
-class BlogListPageComponent {
+export default class BlogListPageComponent {
   posts = injectContentFiles<PostAttributes>((file) =>
     file.filename.includes('/src/content/blog/')
   )
