@@ -14,3 +14,12 @@ html, body {
   height: 100%;
   margin: 0;
 }
+
+/* Style Analog's MarkdownRouteComponent for blog posts */
+analog-markdown-route {
+  @apply block max-w-3xl mx-auto px-6 py-16;
+}
+
+analog-markdown-route analog-markdown {
+  @apply block prose lg:prose-xl prose-gray prose-headings:text-gray-900 prose-a:text-teal-600 max-w-none;
+}
