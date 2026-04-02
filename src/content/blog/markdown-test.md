@@ -5,8 +5,7 @@ date: 'Tue Aug 23 2022'
 tags:
     - Markdown
 published: false
-slugs:
-    - ___UNPUBLISHED___llyfs925_X0WY5inFqMwsDkY8vTZhYxPQDVGQS3R8
+slug: 'markdown-test'
 ---
 
 # Angular material
@@ -17,7 +16,7 @@ Title - Header 1
 
 Header 2
 
-## another vblock
+## another block
 
 Table
 

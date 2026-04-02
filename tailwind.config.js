@@ -1,47 +1,32 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  mode: 'jit',
-  content: ["./src/**/*.{html,ts}"],
+export default {
+  content: ['./index.html', './src/**/*.{html,ts}'],
   theme: {
-    screens: {
-      'sm': '640px',
-      // => @media (min-width: 640px) { ... }
-
-      'md': '768px',
-      // => @media (min-width: 768px) { ... }
-
-      'lg': '1024px',
-      // => @media (min-width: 1024px) { ... }
-
-      'xl': '1280px',
-      // => @media (min-width: 1280px) { ... }
-
-      '2xl': '1536px',
-      // => @media (min-width: 1536px) { ... }
-
-      '3xl': '2000px',
-      // => @media (min-width: 1536px) { ... }
-    },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Caveat', 'cursive'],
+      },
       typography: {
         DEFAULT: {
           css: {
             code: {
-              color: "#333",
-
-              "@apply bg-gray-50 text-gray-700": "",
+              color: '#e2e8f0',
+              backgroundColor: '#1e293b',
+              padding: '0.2em 0.4em',
+              borderRadius: '0.25rem',
+              fontWeight: '400',
             },
-            "code::before": {
-              content: '""',
-            },
-            "code::after": {
-              content: '""',
+            'code::before': { content: '""' },
+            'code::after': { content: '""' },
+            'pre code': {
+              backgroundColor: 'transparent',
+              padding: '0',
             },
           },
         },
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
-}
-
+  plugins: [require('@tailwindcss/typography')],
+};
