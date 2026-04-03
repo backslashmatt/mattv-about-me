@@ -1,33 +1,45 @@
-# Personal site made with Scully, Tailwind and ng16
+# Matt Verry - Personal Site
 
-This project is my personal site, which contains my blog. It was made with [Scully](https://scully.io/), [Tailwind](https://tailwindcss.com/docs/installation) and Angular v17.
-Inspired and based on [Nelson's blog](https://github.com/nelsongutidev)
+My personal site and blog, built with [Analog](https://analogjs.org/), [Angular](https://angular.dev/) v19, and [Tailwind CSS](https://tailwindcss.com/). Deployed on [Firebase Hosting](https://firebase.google.com/docs/hosting).
+
+Inspired and based on [Nelson's blog](https://github.com/nelsongutidev).
 
 ## Development server
 
-To run the angular app, run `ng serve`. App will be served on port:4200.
+```bash
+npm run dev
+```
 
-## Scully server
+App will be served at `http://localhost:5173`.
 
-To run the scully server locally, do the following:
+## Build
 
-1. `ng build`
-2. `npm run scully`
-3. `npm run scully:serve`
+```bash
+npm run build
+```
 
-Visit port 1668
+Output is generated in `dist/analog/public` for static hosting.
 
-Any change on the angular app needs a new ng build for the scully server to pick up.
+## Blog
 
-## Changes to Blog page
+Blog posts are markdown files in `src/content/blog/`. Add a new `.md` file with frontmatter to create a post:
 
-If you create a new .md file or updated it, make sure you run `npm run scully -- --scanRoutes` so that scully can find the new routes and add them.
-Or run `npm run build:ci`.
+```markdown
+---
+title: 'My Post'
+description: 'A short description'
+date: 'Mon Jan 1 2024'
+tags:
+    - Angular
+published: true
+slug: 'my-post'
+---
 
-## Can I use this project
+Your content here...
+```
 
-Feel free to use this code. Create your own blog, or your own site and style it however you like and ship it 🚀. Just try to make it your own 😉.
+Posts with `published: true` will appear on the blog page automatically.
 
-## Angular CLI Explorer
+## Can I use this project?
 
-This project contains an Angular CLI Explorer, which constructs the desired CLI command after selecting from the available options.
+Feel free to use this code. Create your own blog or site, style it however you like, and ship it. Just try to make it your own.
