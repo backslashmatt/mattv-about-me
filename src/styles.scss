@@ -1,15 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@use 'tailwindcss/base';
+@use 'tailwindcss/components';
+@use 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 body {
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-html, body { height: 100%; max-width: 100% }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  margin: 0;
+}
 
-.logo {
-  font-family: Caveat, serif;
+/* Style Analog's MarkdownRouteComponent for blog posts */
+analog-markdown-route {
+  @apply block max-w-3xl mx-auto px-6 py-16;
+}
+
+analog-markdown-route analog-markdown {
+  @apply block prose lg:prose-xl prose-gray prose-headings:text-gray-900 prose-a:text-teal-600 max-w-none;
 }
