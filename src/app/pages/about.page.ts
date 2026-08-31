@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { SocialLinksComponent } from '../components/social-links/social-links.component';
 
 @Component({
-  standalone: true,
   imports: [SocialLinksComponent],
   template: `
     <div class="max-w-5xl mx-auto px-6 py-16 md:py-24">

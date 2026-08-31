@@ -1,8 +1,13 @@
 # Matt Verry - Personal Site
 
-My personal site and blog, built with [Analog](https://analogjs.org/), [Angular](https://angular.dev/) v19, and [Tailwind CSS](https://tailwindcss.com/). Deployed on [Firebase Hosting](https://firebase.google.com/docs/hosting).
+My personal site and blog, built with [Analog](https://analogjs.org/), [Angular](https://angular.dev/) v22, and [Tailwind CSS](https://tailwindcss.com/). Deployed on [Firebase Hosting](https://firebase.google.com/docs/hosting).
 
 Inspired and based on [Nelson's blog](https://github.com/nelsongutidev).
+
+## Requirements
+
+Node 24 LTS or newer (see `.nvmrc` and the `engines` field in `package.json`).
+Angular 22 requires Node `^24.15.0 || >=26.0.0`.
 
 ## Development server
 

@@ -3,7 +3,6 @@ import { SocialLinksComponent } from '../social-links/social-links.component';
 
 @Component({
   selector: 'app-footer',
-  standalone: true,
   imports: [SocialLinksComponent],
   template: `
     <footer class="border-t border-gray-200 bg-white">

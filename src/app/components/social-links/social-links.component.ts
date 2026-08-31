@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-social-links',
-  standalone: true,
   template: `
     <div class="flex justify-center gap-5">
       @for (link of links; track link.name) {

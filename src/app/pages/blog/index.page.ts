@@ -13,7 +13,6 @@ interface PostAttributes {
 }
 
 @Component({
-  standalone: true,
   imports: [RouterLink, DatePipe],
   template: `
     <div class="max-w-3xl mx-auto px-6 py-16 md:py-24">
