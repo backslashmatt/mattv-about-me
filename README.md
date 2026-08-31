@@ -18,7 +18,17 @@ App will be served at `http://localhost:5173`.
 npm run build
 ```
 
-Output is generated in `dist/analog/public` for static hosting.
+Output is generated in `dist/analog/public` for static hosting, which is the
+directory Firebase Hosting serves (see `firebase.json`).
+
+## Tests
+
+```bash
+npm test
+```
+
+Vitest runs the specs in `src/**/*.spec.ts` in a jsdom environment, using
+`vitest.config.ts` (separate from the app's `vite.config.ts`).
 
 ## Blog
 

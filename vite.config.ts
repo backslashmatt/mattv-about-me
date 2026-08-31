@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import analog from '@analogjs/platform';
 
@@ -23,10 +22,4 @@ export default defineConfig({
       },
     }),
   ],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['src/test-setup.ts'],
-    include: ['**/*.spec.ts'],
-  },
 });
