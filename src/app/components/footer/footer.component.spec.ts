@@ -8,7 +8,7 @@ describe('FooterComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FooterComponent]
+      imports: [FooterComponent],
     });
     fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
@@ -17,5 +17,11 @@ describe('FooterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render the current year in the copyright line', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(component.currentYear).toBe(new Date().getFullYear());
+    expect(compiled.textContent).toContain(`${component.currentYear} Matt Verry`);
   });
 });

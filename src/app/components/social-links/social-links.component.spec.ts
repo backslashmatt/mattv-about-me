@@ -8,7 +8,7 @@ describe('SocialLinksComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SocialLinksComponent]
+      imports: [SocialLinksComponent],
     });
     fixture = TestBed.createComponent(SocialLinksComponent);
     component = fixture.componentInstance;
@@ -17,5 +17,16 @@ describe('SocialLinksComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render a link for every social profile', () => {
+    const anchors = (fixture.nativeElement as HTMLElement).querySelectorAll('a');
+    expect(anchors.length).toBe(component.links.length);
+  });
+
+  it('should render the email link as a mailto', () => {
+    const anchors = Array.from((fixture.nativeElement as HTMLElement).querySelectorAll('a'));
+    const email = anchors.find((a) => a.getAttribute('aria-label') === 'Email');
+    expect(email?.getAttribute('href')).toBe('mailto:matthew.verry@lyraapps.com');
   });
 });
