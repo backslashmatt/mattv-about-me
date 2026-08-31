@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
+import { site } from '../../site.config';
 
 @Component({
   selector: 'app-social-links',
   template: `
-    <div class="flex justify-center gap-5">
+    <div [class]="alignClass()">
       @for (link of links; track link.name) {
         <a [href]="link.type === 'email' ? 'mailto:' + link.url : link.url"
            [target]="link.type === 'email' ? '_self' : '_blank'"
            rel="noopener"
            [attr.aria-label]="link.name"
-           class="text-gray-400 hover:text-teal-600 transition-colors">
+           [class]="linkClass()">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             @switch (link.icon) {
               @case ('github') {
@@ -36,11 +37,27 @@ import { Component } from '@angular/core';
   `,
 })
 export class SocialLinksComponent {
+  /** `light` sits on the pale page background; `dark` sits on the ink footer. */
+  tone = input<'light' | 'dark'>('light');
+  align = input<'center' | 'start'>('center');
+
+  alignClass = computed(() =>
+    this.align() === 'center'
+      ? 'flex gap-5 justify-center'
+      : 'flex gap-5 justify-start'
+  );
+
+  linkClass = computed(() =>
+    this.tone() === 'dark'
+      ? 'text-ink-400 hover:text-accent-300 transition-colors'
+      : 'text-ink-400 hover:text-accent-700 transition-colors'
+  );
+
   links = [
     { name: 'GitHub', url: 'https://github.com/backslashmatt', icon: 'github' },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mattvdev/', icon: 'linkedin' },
     { name: 'Twitter', url: 'https://twitter.com/mattv_dev', icon: 'twitter' },
     { name: 'Mastodon', url: 'https://mstdn.social/@mattv', icon: 'mastodon' },
-    { name: 'Email', url: 'matthew.verry@lyraapps.com', icon: 'email', type: 'email' },
+    { name: 'Email', url: site.email, icon: 'email', type: 'email' },
   ];
 }

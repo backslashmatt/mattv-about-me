@@ -2,7 +2,7 @@
 @use 'tailwindcss/components';
 @use 'tailwindcss/utilities';
 
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
@@ -15,11 +15,25 @@ html, body {
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Visible focus for keyboard users on every interactive element. */
+a:focus-visible,
+button:focus-visible {
+  @apply outline-none ring-2 ring-accent-500 ring-offset-2 ring-offset-white rounded-sm;
+}
+
 /* Style Analog's MarkdownRouteComponent for blog posts */
 analog-markdown-route {
-  @apply block max-w-3xl mx-auto px-6 py-16;
+  @apply block max-w-3xl mx-auto px-6 py-16 md:py-24;
 }
 
 analog-markdown-route analog-markdown {
-  @apply block prose lg:prose-xl prose-gray prose-headings:text-gray-900 prose-a:text-teal-600 max-w-none;
+  @apply block prose lg:prose-lg prose-slate max-w-none
+         prose-headings:text-ink-900 prose-headings:tracking-tight
+         prose-a:text-accent-700 prose-a:font-medium
+         prose-strong:text-ink-900
+         prose-blockquote:border-accent-500 prose-blockquote:text-ink-600;
 }

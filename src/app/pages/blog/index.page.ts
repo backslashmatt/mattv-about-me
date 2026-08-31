@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { injectContentFiles } from '@analogjs/content';
 import { DatePipe } from '@angular/common';
+import type { RouteMeta } from '@analogjs/router';
+import { CtaComponent } from '../../components/cta/cta.component';
+import { pageMeta, pageTitle } from '../../seo';
 
 interface PostAttributes {
   title: string;
@@ -12,43 +15,65 @@ interface PostAttributes {
   slug: string;
 }
 
+const description =
+  'Notes on modernizing legacy .NET and Angular applications — migration patterns, framework upgrades, and the problems that keep coming up in older codebases.';
+
+export const routeMeta: RouteMeta = {
+  title: pageTitle('Writing'),
+  meta: pageMeta({
+    title: 'Writing — Matt Verry',
+    description,
+    path: '/blog',
+  }),
+};
+
 @Component({
-  imports: [RouterLink, DatePipe],
+  imports: [RouterLink, DatePipe, CtaComponent],
   template: `
     <div class="max-w-3xl mx-auto px-6 py-16 md:py-24">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Blog</h1>
-      <div class="w-16 h-1 bg-teal-600 rounded mb-10"></div>
+      <h1 class="text-4xl md:text-5xl font-bold text-ink-900 tracking-tight mb-4">Writing</h1>
+      <p class="text-lg text-ink-600 leading-relaxed mb-12 max-w-2xl">
+        Notes from inside older codebases &mdash; migration patterns, framework upgrades,
+        and the problems that turn up again and again once an application has been in
+        production long enough.
+      </p>
 
       @if (posts.length === 0) {
-        <p class="text-gray-500 text-lg">No posts yet. Check back soon!</p>
+        <p class="text-ink-500 text-lg">No posts published yet. Check back soon.</p>
       }
 
-      <div class="space-y-6">
+      <div class="space-y-5">
         @for (post of posts; track post.slug) {
-          <article class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-            <div class="flex items-center gap-2 mb-3">
+          <article class="bg-white rounded-xl p-6 md:p-7 border border-ink-100 shadow-card hover:shadow-lift transition-shadow group">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
               @for (tag of post.attributes.tags; track tag) {
-                <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-700">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-50 text-accent-800 border border-accent-100">
                   {{ tag }}
                 </span>
               }
-              <span class="text-gray-400 text-sm ml-auto">{{ post.attributes.date | date }}</span>
+              <time class="text-ink-400 text-sm ml-auto" [attr.datetime]="post.attributes.date">
+                {{ post.attributes.date | date }}
+              </time>
             </div>
-            <h2 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
+            <h2 class="text-xl font-bold text-ink-900 mb-2 group-hover:text-accent-700 transition-colors">
               <a [routerLink]="'/blog/' + post.slug">{{ post.attributes.title }}</a>
             </h2>
-            <p class="text-gray-600 mb-4">{{ post.attributes.description }}</p>
+            <p class="text-ink-600 mb-4 leading-relaxed">{{ post.attributes.description }}</p>
             <a [routerLink]="'/blog/' + post.slug"
-               class="inline-flex items-center text-teal-600 font-medium hover:text-teal-700 transition-colors text-sm">
+               class="inline-flex items-center text-accent-700 font-semibold hover:text-accent-800 transition-colors text-[15px]">
               Read more
-              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              <svg class="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
               </svg>
             </a>
           </article>
         }
       </div>
     </div>
+
+    <app-cta
+      heading="Reading this because you have one of these systems?"
+      body="If the codebase behind the question is one you are responsible for, an assessment turns it into a plan with dates and numbers attached." />
   `,
 })
 export default class BlogListPageComponent {
