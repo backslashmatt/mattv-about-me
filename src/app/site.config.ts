@@ -22,7 +22,7 @@ export const site = {
 
 /** The one-line pitch, reused in meta tags and the footer. */
 export const tagline =
-  'I fix and replace the inventory and construction build-out systems large operations depend on, with a fixed scope and a clear finish line.';
+  'I fix and replace the inventory and construction build-out systems large operations depend on.';
 
 /**
  * TODO(matt): facts only you can give. Each value below renders on the site

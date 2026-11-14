@@ -68,8 +68,8 @@ export const routeMeta: RouteMeta = {
             Any of this sound familiar?
           </h2>
           <p class="text-lg text-ink-600 leading-relaxed">
-            These are the conversations that start most engagements. If more than one
-            of them is true, the clock is already running.
+            If more than one of these is true of the system you run, the clock is
+            already running.
           </p>
         </div>
         <div class="grid sm:grid-cols-2 gap-5">
@@ -149,7 +149,7 @@ export const routeMeta: RouteMeta = {
             Three ways to work together
           </h2>
           <p class="text-lg text-ink-600 leading-relaxed">
-            Most clients start with the health check. It is deliberately small, so you
+            The health check is the place to start. It is deliberately small, so you
             can find out whether I'm right for the job before committing to the job.
           </p>
         </div>

@@ -74,7 +74,7 @@ describe('Services page', () => {
   });
 
   it('should carry its own meta description', () => {
-    expect(descriptionOf(servicesMeta)).toContain('assessment');
+    expect(descriptionOf(servicesMeta)).toContain('health check');
   });
 });
 

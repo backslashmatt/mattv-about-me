@@ -23,10 +23,15 @@ writeFileSync(target, html);
 rmSync(join(publicDir, '404'), { recursive: true });
 
 if (existsSync(sitemap)) {
+  // Remove only the entry for the site-root /404, wherever <loc> sits in it.
   const xml = readFileSync(sitemap, 'utf8').replace(
-    /\s*<url>\s*<loc>[^<]*\/404<\/loc>[\s\S]*?<\/url>/g,
+    /\s*<url>(?:(?!<\/url>)[\s\S])*?<loc>https?:\/\/[^/<]+\/404<\/loc>[\s\S]*?<\/url>/g,
     ''
   );
+  if (/<loc>https?:\/\/[^/<]+\/404<\/loc>/.test(xml)) {
+    console.error('postbuild-404: could not remove /404 from sitemap.xml; check its format');
+    process.exit(1);
+  }
   writeFileSync(sitemap, xml);
 }
 

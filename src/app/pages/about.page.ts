@@ -56,8 +56,8 @@ export const routeMeta: RouteMeta = {
               site.
             </p>
             <p>
-              That second part turned out to be the more useful skill. Plenty of
-              developers can start something new. Far fewer are willing to open a
+              Much of that time has been spent inside systems other people built.
+              Plenty of developers can start something new. Far fewer are willing to open a
               ten-year-old codebase that nobody has documented, work out what it
               actually does, and move it forward without breaking the business that
               depends on it running Monday morning.
@@ -140,7 +140,7 @@ export const routeMeta: RouteMeta = {
 
     <app-cta
       heading="Think this might be your problem?"
-      body="Tell me what you're running and what's forcing the change. If I'm not the right fit, I'll say so on the first call." />
+      body="Tell me what you're running and what's forcing the change. If I'm not the right fit, I'll say so in the first reply." />
   `,
 })
 export default class AboutPageComponent {

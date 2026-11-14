@@ -6,7 +6,7 @@ import { pageMeta, pageTitle } from '../seo';
 import { placeholders, site } from '../site.config';
 
 const description =
-  'Three ways to work with Lyra on inventory and construction build-out systems: a fixed-fee inventory data health check (the assessment), retiring one legacy inventory tool at a fixed price, and senior .NET and Angular help embedded with integrators.';
+  'Three ways to work with Lyra on inventory and construction build-out systems: a fixed-fee inventory data health check, retiring one legacy inventory tool at a fixed price, and senior .NET and Angular help embedded with integrators.';
 
 export const routeMeta: RouteMeta = {
   title: pageTitle('Services'),
@@ -236,7 +236,7 @@ export default class ServicesPageComponent {
   stack = [
     {
       area: 'Domain',
-      items: ['Inventory management', 'Construction build-out', 'ERP integration', 'Field data capture', 'Legacy replacement'],
+      items: ['Inventory management', 'Construction build-out', 'Legacy replacement', 'Data reconciliation'],
     },
     {
       area: 'Back end',

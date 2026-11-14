@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, DOCUMENT, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { site } from '../../site.config';
 
@@ -7,6 +7,7 @@ import { site } from '../../site.config';
   imports: [RouterLink, RouterLinkActive],
   template: `
     <a href="#main"
+       (click)="skipToMain($event)"
        class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:bg-ink-900 focus:text-white focus:rounded-lg">
       Skip to content
     </a>
@@ -86,6 +87,18 @@ import { site } from '../../site.config';
 })
 export class HeaderComponent {
   mobileMenuOpen = signal(false);
+  readonly #document = inject(DOCUMENT);
+
+  /**
+   * With <base href="/">, a bare #main link resolves to /#main and would
+   * navigate home from any other page, so move focus to the content instead.
+   */
+  skipToMain(event: Event): void {
+    event.preventDefault();
+    const main = this.#document.getElementById('main');
+    main?.focus();
+    main?.scrollIntoView();
+  }
   brand = site.name;
 
   navLinks = [

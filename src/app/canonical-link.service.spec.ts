@@ -24,6 +24,7 @@ describe('CanonicalLinkService', () => {
           { path: '', component: BlankComponent },
           { path: 'services', component: BlankComponent },
           { path: 'old', redirectTo: 'services' },
+          { path: '**', component: BlankComponent },
         ]),
       ],
     });
@@ -55,6 +56,14 @@ describe('CanonicalLinkService', () => {
     await router.navigateByUrl('/services?utm_source=newsletter#assessment');
 
     expect(canonical()).toBe(`${site.url}/services`);
+  });
+
+  it('should drop the canonical link on the not-found route', async () => {
+    service.init();
+    await router.navigateByUrl('/services');
+    await router.navigateByUrl('/no/such/page');
+
+    expect(canonical()).toBeUndefined();
   });
 
   it('should follow redirects to the destination URL', async () => {
