@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { site } from '../../site.config';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-6"
            aria-label="Primary">
         <a routerLink="/" class="font-display text-3xl text-ink-900 hover:text-accent-700 transition-colors leading-none">
-          matt v
+          {{ brand }}
         </a>
 
         <!-- Desktop nav -->
@@ -33,7 +34,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
           </ul>
           <a routerLink="/contact"
              class="px-4 py-2 bg-ink-900 text-white rounded-lg font-medium text-[15px] hover:bg-accent-700 transition-colors">
-            Book an assessment
+            Book a call
           </a>
         </div>
 
@@ -74,7 +75,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
               <a routerLink="/contact"
                  (click)="mobileMenuOpen.set(false)"
                  class="block text-center px-4 py-2.5 bg-ink-900 text-white rounded-lg font-medium">
-                Book an assessment
+                Book a call
               </a>
             </li>
           </ul>
@@ -85,6 +86,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class HeaderComponent {
   mobileMenuOpen = signal(false);
+  brand = site.name;
 
   navLinks = [
     { path: '/services', label: 'Services', exact: false },

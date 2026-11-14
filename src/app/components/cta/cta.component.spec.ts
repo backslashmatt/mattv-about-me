@@ -19,16 +19,16 @@ describe('CtaComponent', () => {
 
   it('should point at contact as the primary action', () => {
     const primary = html().querySelector('a[href="/contact"]');
-    expect(primary?.textContent?.trim()).toBe('Book a modernization assessment');
+    expect(primary?.textContent?.trim()).toBe('Book a 20-minute call');
   });
 
-  it('should offer services as the secondary action', () => {
-    expect(html().querySelector('a[href="/services"]')).not.toBeNull();
+  it('should offer the fixed-scope offer on services as the secondary action', () => {
+    expect(html().querySelector('a[href="/services#migration"]')).not.toBeNull();
   });
 
   it('should use the default copy when no inputs are supplied', () => {
     expect(html().querySelector('h2')?.textContent).toContain(
-      'Find out what your migration actually involves.'
+      'Find out what retiring that tool actually involves.'
     );
   });
 

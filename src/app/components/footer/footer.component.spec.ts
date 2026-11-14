@@ -24,7 +24,7 @@ describe('FooterComponent', () => {
   it('should render the current year in the copyright line', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(component.currentYear).toBe(new Date().getFullYear());
-    expect(compiled.textContent).toContain(`${component.currentYear} Matt Verry`);
+    expect(compiled.textContent).toContain(`${component.currentYear} Lyra Software Applications LLC`);
   });
 
   it('should link to every primary section of the site', () => {

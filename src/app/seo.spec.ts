@@ -56,6 +56,6 @@ describe('pageMeta', () => {
 
 describe('pageTitle', () => {
   it('should suffix the site name so tabs and search results stay identifiable', () => {
-    expect(pageTitle('Contact')).toBe(`Contact — ${site.name}`);
+    expect(pageTitle('Contact')).toBe(`Contact · ${site.name}`);
   });
 });

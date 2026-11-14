@@ -6,12 +6,12 @@ import { pageMeta, pageTitle } from '../seo';
 import { site } from '../site.config';
 
 const description =
-  'Start a conversation about modernizing your legacy .NET or Angular application. What to include, what happens next, and how quickly you will hear back.';
+  'Book a 20-minute call with Lyra about the inventory or build-out system you want fixed or replaced. What to include, what happens next, and how quickly you will hear back.';
 
 export const routeMeta: RouteMeta = {
   title: pageTitle('Contact'),
   meta: pageMeta({
-    title: 'Contact Matt Verry',
+    title: `Contact ${site.name}`,
     description,
     path: '/contact',
   }),
@@ -27,9 +27,9 @@ export const routeMeta: RouteMeta = {
           Tell me what you're running
         </h1>
         <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-2xl mb-9">
-          No form, no funnel, no discovery questionnaire. One email to me, read by me.
-          If I'm not the right person for the job, you'll get a straight answer in the
-          first reply rather than after two calls.
+          No form, no funnel, no discovery questionnaire. One email to me, read by me,
+          and we find 20 minutes to talk. If I'm not the right person for the job,
+          you'll get a straight answer in the first reply.
         </p>
         <a [href]="mailto"
            class="inline-flex items-center gap-2.5 px-7 py-3.5 bg-accent-500 text-ink-950 rounded-lg font-semibold hover:bg-accent-400 transition-colors">
@@ -119,20 +119,20 @@ export default class ContactPageComponent {
    */
   mailto =
     `mailto:${site.email}` +
-    `?subject=${encodeURIComponent('Modernization enquiry')}`;
+    `?subject=${encodeURIComponent('Inventory system enquiry')}`;
 
   includeItems = [
     {
-      label: 'What the application does',
-      detail: 'One or two sentences on the business it supports and who uses it. Technical detail matters less than this does.',
+      label: 'What the system does',
+      detail: 'One or two sentences on what it tracks (stock, sites, materials, crews) and who uses it. Technical detail matters less than this does.',
     },
     {
       label: 'Roughly what it is built on',
-      detail: 'Framework versions if you know them, a guess if you do not. "Some AngularJS thing from 2016" is a genuinely useful answer.',
+      detail: 'Framework versions and the systems it talks to (ERP, field apps, spreadsheets) if you know them, a guess if you do not. "Some AngularJS thing from 2016" is a genuinely useful answer.',
     },
     {
       label: 'What is forcing the change',
-      detail: 'An audit, a cloud mandate, a departure, a customer requirement, or simply that it has become too slow to change.',
+      detail: 'Counts nobody trusts, an ERP upgrade, a new site, an audit, a departure, or simply that it has become too slow to change.',
     },
     {
       label: 'Any date you are working to',
@@ -150,12 +150,12 @@ export default class ContactPageComponent {
       detail: 'Either with questions, or with the honest answer that this is not something I should take on.',
     },
     {
-      title: 'A short call',
-      detail: 'Half an hour, no slides, no pitch deck. Mostly me asking about the system and how it got here.',
+      title: 'A 20-minute call',
+      detail: 'No slides, no pitch deck. Mostly me asking about the system and how it got here.',
     },
     {
       title: 'A written scope and a fixed price',
-      detail: 'For an assessment, in writing, before you commit to anything. If it is not right, that is a perfectly fine place to stop.',
+      detail: 'For the health check, in writing, before you commit to anything. If it is not right, that is a perfectly fine place to stop.',
     },
   ];
 

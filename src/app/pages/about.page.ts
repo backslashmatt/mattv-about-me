@@ -4,14 +4,15 @@ import type { RouteMeta } from '@analogjs/router';
 import { SocialLinksComponent } from '../components/social-links/social-links.component';
 import { CtaComponent } from '../components/cta/cta.component';
 import { pageMeta, pageTitle } from '../seo';
+import { placeholders, site } from '../site.config';
 
 const description =
-  'Matt Verry is an independent consultant who modernizes legacy .NET and Angular applications. How he works, who he works with, and what to expect from an engagement.';
+  'Matt Verry is an independent senior developer and architect, and Lyra is his practice. He builds and replaces inventory and construction build-out systems for large operations.';
 
 export const routeMeta: RouteMeta = {
   title: pageTitle('About'),
   meta: pageMeta({
-    title: 'About Matt Verry',
+    title: `About Matt Verry · ${site.name}`,
     description,
     path: '/about',
     type: 'article',
@@ -32,8 +33,8 @@ export const routeMeta: RouteMeta = {
           <app-social-links align="start" />
           <p class="text-sm text-ink-500 mt-5 leading-relaxed text-center md:text-left">
             Working through
-            <span class="text-ink-700 font-medium">Lyra Apps</span>,
-            my consultancy.
+            <span class="text-ink-700 font-medium">{{ legalName }}</span>,
+            my practice in Arizona.
           </p>
         </div>
 
@@ -43,15 +44,16 @@ export const routeMeta: RouteMeta = {
             About Matt
           </h1>
           <p class="text-lg text-accent-700 font-medium mb-8">
-            Independent consultant, legacy .NET &amp; Angular modernization
+            Independent senior developer and architect &middot; Lyra
           </p>
 
           <div class="space-y-6 text-lg text-ink-600 leading-relaxed">
             <p>
-              I have spent my career as a full stack .NET developer working in Angular
-              &mdash; building the line-of-business applications that companies run on,
-              and then, increasingly, being the person called in when those applications
-              had fallen years behind.
+              I'm an independent senior developer and architect with {{ years }} years
+              in .NET and Angular. Most of that work has been large-scale inventory
+              management and construction build-out for large enterprises: the systems
+              that track what is in stock, where it is, and what has been installed on
+              site.
             </p>
             <p>
               That second part turned out to be the more useful skill. Plenty of
@@ -61,9 +63,9 @@ export const routeMeta: RouteMeta = {
               depends on it running Monday morning.
             </p>
             <p>
-              So that is what I do now, deliberately and more or less exclusively.
-              Legacy .NET and Angular systems, brought current, in production,
-              incrementally.
+              Lyra is how I work with clients directly. I fix and replace the inventory
+              and build-out systems large operations depend on, with a fixed scope and a
+              clear finish line.
             </p>
           </div>
 
@@ -138,22 +140,25 @@ export const routeMeta: RouteMeta = {
 
     <app-cta
       heading="Think this might be your problem?"
-      body="Tell me what you're running and what's forcing the change. If I'm not the right fit, I'll say so in the first reply." />
+      body="Tell me what you're running and what's forcing the change. If I'm not the right fit, I'll say so on the first call." />
   `,
 })
 export default class AboutPageComponent {
+  legalName = site.legalName;
+  years = placeholders.years;
+
   reasons = [
     {
       title: 'Both halves of the stack, held by the same person',
-      body: 'Angular and .NET migrations are entangled. Contracts, auth, serialization, and build tooling all cross the boundary, and when a front-end contractor and a back-end contractor each own one side, the boundary is where the schedule goes to die. One person holding both removes that seam entirely.',
+      body: 'Front end and back end changes are entangled. Contracts, auth, serialization, and build tooling all cross the boundary, and when a front-end contractor and a back-end contractor each own one side, the boundary is where the schedule goes to die. One person holding both removes that seam entirely.',
     },
     {
       title: 'You get the person who does the work',
       body: 'No account manager, no bench, no handoff to whoever was free that month. The person who scopes your project is the person writing the code, which also means the estimate comes from someone who will have to live with it.',
     },
     {
-      title: 'Legacy work is the specialty, not the fallback',
-      body: 'Most consultancies treat modernization as what you take when greenfield is quiet. It is the whole practice here, so the patterns — strangler-fig migrations, parallel running, incremental cutover — are well-worn rather than improvised.',
+      title: 'The domain is the specialty, not just the stack',
+      body: 'Inventory and build-out systems have their own failure modes: counts that drift, data re-keyed between systems, crews who stop trusting the tool. Knowing those is most of the job, and the patterns for fixing them, like running old and new side by side and cutting over in stages, are well-worn rather than improvised.',
     },
   ];
 
@@ -172,6 +177,7 @@ export default class AboutPageComponent {
     'ASP.NET Core',
     'TypeScript',
     'Azure',
+    'PostgreSQL',
     'SQL Server',
     'Entity Framework',
     'REST APIs',

@@ -2,11 +2,11 @@ import { defineConfig } from 'vite';
 import analog from '@analogjs/platform';
 
 /**
- * TODO(matt): keep in sync with `site.url` in `src/app/site.config.ts`.
+ * Keep in sync with `site.url` in `src/app/site.config.ts`.
  * Vite config cannot import from `src`, so the canonical origin is repeated
  * here for the sitemap only.
  */
-const SITE_URL = 'https://matt-v.web.app';
+const SITE_URL = 'https://lyraapps.com';
 
 export default defineConfig({
   build: {
@@ -30,6 +30,10 @@ export default defineConfig({
           '/about',
           '/contact',
           '/blog',
+          // Matches the catch-all not-found page. Its HTML becomes 404.html (see
+          // the post-build step below), which Firebase Hosting serves with a real
+          // 404 status for any path that has no file.
+          '/404',
           {
             contentDir: 'src/content/blog',
             transform: (file) => {

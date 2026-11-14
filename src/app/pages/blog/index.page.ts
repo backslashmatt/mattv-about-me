@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import type { RouteMeta } from '@analogjs/router';
 import { CtaComponent } from '../../components/cta/cta.component';
 import { pageMeta, pageTitle } from '../../seo';
+import { site } from '../../site.config';
 
 interface PostAttributes {
   title: string;
@@ -16,12 +17,12 @@ interface PostAttributes {
 }
 
 const description =
-  'Notes on modernizing legacy .NET and Angular applications — migration patterns, framework upgrades, and the problems that keep coming up in older codebases.';
+  'Notes on inventory and construction build-out systems and the legacy .NET and Angular code underneath them: replacement patterns, data that drifts, and the problems that keep coming up.';
 
 export const routeMeta: RouteMeta = {
   title: pageTitle('Writing'),
   meta: pageMeta({
-    title: 'Writing — Matt Verry',
+    title: `Writing · ${site.name}`,
     description,
     path: '/blog',
   }),

@@ -20,11 +20,11 @@ import { RouterLink } from '@angular/router';
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a routerLink="/contact"
              class="px-7 py-3.5 bg-accent-500 text-ink-950 rounded-lg font-semibold hover:bg-accent-400 transition-colors">
-            Book a modernization assessment
+            Book a 20-minute call
           </a>
-          <a routerLink="/services"
+          <a routerLink="/services" fragment="migration"
              class="px-7 py-3.5 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/15">
-            See how engagements work
+            See the fixed-scope offer
           </a>
         </div>
       </div>
@@ -32,8 +32,8 @@ import { RouterLink } from '@angular/router';
   `,
 })
 export class CtaComponent {
-  heading = input('Find out what your migration actually involves.');
+  heading = input('Find out what retiring that tool actually involves.');
   body = input(
-    'The assessment is a fixed-fee, fixed-scope piece of work with a written plan at the end of it. No retainer, no commitment to the build, and you keep the plan either way.'
+    'The health check is one week, fixed fee, with a written plan and a fixed quote at the end of it. No retainer, no commitment to the build, and you keep the plan either way.'
   );
 }

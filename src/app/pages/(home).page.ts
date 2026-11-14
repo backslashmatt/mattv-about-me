@@ -3,12 +3,14 @@ import { RouterLink } from '@angular/router';
 import type { RouteMeta } from '@analogjs/router';
 import { CtaComponent } from '../components/cta/cta.component';
 import { pageMeta } from '../seo';
-import { tagline } from '../site.config';
+import { placeholders, site, tagline } from '../site.config';
+
+const title = `${site.name} · Inventory and build-out systems`;
 
 export const routeMeta: RouteMeta = {
-  title: 'Matt Verry — Legacy .NET & Angular Modernization',
+  title,
   meta: pageMeta({
-    title: 'Matt Verry — Legacy .NET & Angular Modernization',
+    title,
     description: tagline,
     path: '/',
   }),
@@ -25,25 +27,25 @@ export const routeMeta: RouteMeta = {
           <div>
             <p class="inline-flex items-center gap-2 text-accent-300 font-medium mb-6 text-sm tracking-wide">
               <span class="w-8 h-px bg-accent-400"></span>
-              Independent consultant &middot; .NET &amp; Angular
+              Lyra &middot; Inventory &amp; construction build-out systems
             </p>
             <h1 class="text-4xl md:text-[3.4rem] font-bold tracking-tightest leading-[1.08] mb-7">
-              Your business runs on software that is
-              <span class="text-accent-300">aging out from under you.</span>
+              Inventory and build-out software
+              <span class="text-accent-300">that your crews actually use.</span>
             </h1>
             <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-xl mb-9">
-              I'm Matt Verry. I modernize the legacy .NET and Angular applications
-              companies actually depend on &mdash; incrementally, in production, without
-              pausing the roadmap or betting the business on a rewrite.
+              I'm Matt Verry, and Lyra is my independent practice in Arizona. I fix and
+              replace the inventory and construction build-out systems large operations
+              depend on, with a fixed scope and a clear finish line.
             </p>
             <div class="flex flex-wrap gap-4">
               <a routerLink="/contact"
                  class="px-7 py-3.5 bg-accent-500 text-ink-950 rounded-lg font-semibold hover:bg-accent-400 transition-colors">
-                Book a modernization assessment
+                Book a 20-minute call
               </a>
-              <a routerLink="/services"
+              <a routerLink="/services" fragment="migration"
                  class="px-7 py-3.5 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/15">
-                How engagements work
+                See the fixed-scope offer
               </a>
             </div>
           </div>
@@ -70,7 +72,7 @@ export const routeMeta: RouteMeta = {
             of them is true, the clock is already running.
           </p>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid sm:grid-cols-2 gap-5">
           @for (symptom of symptoms; track symptom.title) {
             <div class="bg-white rounded-xl p-6 border border-ink-100 shadow-card">
               <h3 class="text-base font-semibold text-ink-900 mb-2.5 leading-snug">
@@ -88,40 +90,67 @@ export const routeMeta: RouteMeta = {
       <div class="grid md:grid-cols-[1fr_1.1fr] gap-14 items-start">
         <div>
           <h2 class="text-3xl md:text-4xl font-bold text-ink-900 tracking-tight leading-tight">
-            The problem usually isn't the code.<br/>
+            The problem usually isn't the inventory tool.<br/>
             <span class="text-accent-700">It's the clock.</span>
           </h2>
         </div>
         <div class="space-y-5 text-lg text-ink-600 leading-relaxed">
           <p>
-            The application works. It has worked for years. That is exactly why nobody
-            has touched it &mdash; and why the frameworks underneath it quietly went
-            end-of-life while everyone was busy shipping features.
+            The tool works. It has worked for years. That is exactly why nobody has
+            touched it, and why the framework underneath it quietly went out of support
+            while everyone was busy running the business.
           </p>
           <p>
-            Now the deadline belongs to somebody else. A security audit, an insurer, a
-            cloud migration mandate, a framework that stopped getting patches, or the
-            last engineer who understood it handing in their notice.
+            Now the deadline belongs to somebody else: an audit, an ERP upgrade, a new
+            site coming online, or the last person who understood the tool handing in
+            their notice.
           </p>
           <p class="text-ink-900 font-medium">
-            That is the work I do, and close to all I do: taking systems that are
-            business-critical and behind, and bringing them current without a
-            big-bang rewrite and without a feature freeze.
+            I've spent {{ years }} years building and rescuing these systems for large
+            enterprises. I replace the one tool everyone depends on, side by side with
+            the old one, with a date it gets switched off.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Service ladder -->
+    <!-- What I work on -->
     <section class="bg-ink-50 border-y border-ink-100">
+      <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+        <div class="max-w-2xl mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-ink-900 tracking-tight mb-5">
+            What I work on
+          </h2>
+          <p class="text-lg text-ink-600 leading-relaxed">
+            Most of my work has been large-scale inventory management and construction
+            build-out for large enterprises.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 mb-10">
+          @for (area of areas; track area.title) {
+            <div class="bg-white rounded-xl p-6 border border-ink-100 shadow-card">
+              <h3 class="text-lg font-bold text-ink-900 mb-2.5">{{ area.title }}</h3>
+              <p class="text-ink-600 text-[15px] leading-relaxed">{{ area.body }}</p>
+            </div>
+          }
+        </div>
+        <p class="border-l-2 border-accent-500 pl-6 py-1 text-ink-700 leading-relaxed max-w-3xl">
+          <span class="font-semibold text-ink-900">Example:</span>
+          {{ exampleResult }}
+        </p>
+      </div>
+    </section>
+
+    <!-- Service ladder -->
+    <section>
       <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
         <div class="max-w-2xl mb-14">
           <h2 class="text-3xl md:text-4xl font-bold text-ink-900 tracking-tight mb-5">
             Three ways to work together
           </h2>
           <p class="text-lg text-ink-600 leading-relaxed">
-            Most clients start with an assessment. It is deliberately small, so you can
-            find out whether I'm right for the job before committing to the job.
+            Most clients start with the health check. It is deliberately small, so you
+            can find out whether I'm right for the job before committing to the job.
           </p>
         </div>
 
@@ -149,7 +178,7 @@ export const routeMeta: RouteMeta = {
                   </li>
                 }
               </ul>
-              <a routerLink="/services"
+              <a routerLink="/services" [fragment]="service.id"
                  class="mt-auto inline-flex items-center text-accent-700 font-semibold hover:text-accent-800 transition-colors text-[15px] group">
                 {{ service.linkLabel }}
                 <svg class="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -163,28 +192,30 @@ export const routeMeta: RouteMeta = {
     </section>
 
     <!-- Principles -->
-    <section class="max-w-6xl mx-auto px-6 py-20 md:py-28">
-      <div class="max-w-2xl mb-14">
-        <h2 class="text-3xl md:text-4xl font-bold text-ink-900 tracking-tight mb-5">
-          How I work
-        </h2>
-        <p class="text-lg text-ink-600 leading-relaxed">
-          Modernization projects fail in predictable ways. These are the commitments
-          that keep this one out of that category.
-        </p>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-x-12 gap-y-10">
-        @for (principle of principles; track principle.title; let i = $index) {
-          <div class="flex gap-5">
-            <span class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent-50 text-accent-700 font-bold flex items-center justify-center text-sm border border-accent-100">
-              {{ i + 1 }}
-            </span>
-            <div>
-              <h3 class="text-lg font-bold text-ink-900 mb-2">{{ principle.title }}</h3>
-              <p class="text-ink-600 leading-relaxed">{{ principle.body }}</p>
+    <section class="bg-ink-50 border-t border-ink-100">
+      <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+        <div class="max-w-2xl mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-ink-900 tracking-tight mb-5">
+            How I work
+          </h2>
+          <p class="text-lg text-ink-600 leading-relaxed">
+            Replacement projects fail in predictable ways. These are the commitments
+            that keep this one out of that category.
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-x-12 gap-y-10">
+          @for (principle of principles; track principle.title; let i = $index) {
+            <div class="flex gap-5">
+              <span class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent-50 text-accent-700 font-bold flex items-center justify-center text-sm border border-accent-100">
+                {{ i + 1 }}
+              </span>
+              <div>
+                <h3 class="text-lg font-bold text-ink-900 mb-2">{{ principle.title }}</h3>
+                <p class="text-ink-600 leading-relaxed">{{ principle.body }}</p>
+              </div>
             </div>
-          </div>
-        }
+          }
+        </div>
       </div>
     </section>
 
@@ -192,70 +223,81 @@ export const routeMeta: RouteMeta = {
   `,
 })
 export default class HomePageComponent {
+  years = placeholders.years;
+  exampleResult = placeholders.exampleResult;
+
   symptoms = [
     {
-      title: 'You are on AngularJS, or an Angular version years past end-of-life',
-      body: 'No security patches, no supported upgrade path from where you are, and every new dependency fights the old ones.',
+      title: 'Counts drift between systems',
+      body: 'The warehouse, the ERP and the field app each have a number for the same item, and nobody trusts any of them without a recount.',
     },
     {
-      title: '.NET Framework 4.8 is as far as you go',
-      body: 'There is no 4.9. There never will be. Everything new in the ecosystem now assumes modern .NET, and you are locked out of it.',
+      title: 'Crews re-key the same data',
+      body: 'Orders, materials and progress get typed into two or three systems by hand, and every copy is another chance to get it wrong.',
     },
     {
-      title: 'Hiring for it has become impossible',
-      body: 'The stack is unattractive enough that candidates pass, and the people who know the system are the ones you can least afford to lose.',
+      title: 'The one tool nobody wants to touch',
+      body: 'Everything depends on it, it was built years ago, and the person who understood it has moved on or is about to.',
     },
     {
-      title: 'Release day is an event',
-      body: 'Manual deploys, a runbook someone keeps in their head, and a rollback plan that has never actually been tested.',
+      title: 'It runs on .NET Framework or an old Angular',
+      body: 'The stack underneath stopped getting patches, so every change is slow, hiring for it is hard, and every audit flags it.',
+    },
+  ];
+
+  areas = [
+    {
+      title: 'Inventory at scale',
+      body: 'Stock, locations and counts across warehouses and sites, kept in step with the ERP so the numbers agree.',
     },
     {
-      title: 'Somebody external is now asking questions',
-      body: 'A security audit, a SOC 2 review, an insurer, or a customer questionnaire has flagged your framework versions in writing.',
+      title: 'Construction build-out',
+      body: 'Materials, crews and progress on large build-outs, from what was planned to what is actually installed on site.',
     },
     {
-      title: 'You have been told to get off the servers',
-      body: 'A cloud migration mandate landed, and the application was never built with any of that in mind.',
+      title: 'Legacy replacement',
+      body: 'The aging .NET or Angular tool everything depends on, replaced piece by piece while it keeps running.',
     },
   ];
 
   services = [
     {
+      id: 'assessment',
       stage: 'Step one',
-      title: 'Modernization Assessment',
+      title: 'Inventory Data Health Check',
       description:
-        'A short, fixed-fee engagement that ends in a written plan you own, whether or not you hire me to carry it out.',
+        'One week, fixed fee. It ends in a written plan you own, whether or not you hire me to carry it out.',
       points: [
-        'Full inventory of frameworks, dependencies, and end-of-life dates',
-        'Risks ranked by real business exposure, not CVE count',
-        'A staged migration plan with effort estimates',
-        'Quick wins you can act on immediately',
+        'Where counts drift, and why, system by system',
+        'Every place data gets re-keyed by hand',
+        "The legacy tool's risks, ranked by business exposure",
+        'A fixed quote to retire it, if that is the right call',
       ],
-      linkLabel: 'What the assessment covers',
+      linkLabel: 'What the health check covers',
     },
     {
-      stage: 'The main event',
-      title: 'Migration & Modernization',
-      description:
-        'The build. Framework upgrades, re-platforming, and the deployment pipeline to support them — shipped incrementally.',
+      id: 'migration',
+      stage: 'The main offer',
+      title: 'Retire One Legacy Inventory Tool',
+      description: `${placeholders.retireWeeks} weeks at a fixed price. The new system runs side by side with the old one until an agreed switch-off date.`,
       points: [
-        'AngularJS and legacy Angular to current Angular',
-        '.NET Framework to modern .NET',
-        'On-premise to Azure, with infrastructure as code',
-        'CI/CD, automated tests, and repeatable deploys',
+        'A one-week assessment to lock the scope',
+        'Build and migrate side by side, with no freeze',
+        'Switch-off on a date agreed up front',
+        'Often small enough to approve without a procurement cycle',
       ],
-      linkLabel: 'How migrations run',
+      linkLabel: 'How a retirement runs',
     },
     {
-      stage: 'Ongoing',
-      title: 'Fractional Technical Lead',
-      description:
-        'Senior depth for a team that needs it part-time — during the migration, or to hold the line after it.',
+      id: 'fractional',
+      stage: 'For integrators',
+      title: 'Embedded for Integrators',
+      description: `Senior .NET and Angular depth on your team's project, remote from Arizona, ${placeholders.embeddedHours} hours a week.`,
       points: [
-        'Architecture and technical direction',
-        'Code review and standards your team keeps using',
-        'Mentoring, so the knowledge stays in-house',
-        'A known quantity on call when something breaks',
+        'C#, ASP.NET Core and EF Core',
+        'Angular front ends that crews actually use',
+        'Integration between inventory, ERP and field systems',
+        'Azure, PostgreSQL and CI/CD',
       ],
       linkLabel: 'What this looks like',
     },
@@ -263,20 +305,20 @@ export default class HomePageComponent {
 
   principles = [
     {
-      title: 'The application ships the entire time',
-      body: 'Migrations run incrementally against the running system, old and new side by side. There is no months-long freeze, and no date where everything changes at once and you hope.',
+      title: 'The old tool keeps running the entire time',
+      body: 'The new system runs side by side with the old one against real data. There is no months-long freeze, and no date where everything changes at once and you hope.',
+    },
+    {
+      title: 'There is a finish line',
+      body: 'Fixed scope, fixed price and a switch-off date agreed before the work starts. You know what done looks like, and when.',
     },
     {
       title: 'Your team ends up owning it',
-      body: 'I write the documentation and work alongside your developers deliberately. The goal is a system your team can maintain without me — not a dependency on me.',
-    },
-    {
-      title: 'Both halves of the stack, one person',
-      body: 'Upgrading Angular and .NET together is where these projects usually stall, because the contract front-end and the contract back-end are pointing at each other. I hold both sides.',
+      body: 'I write the documentation and work alongside your people deliberately. The goal is a system your team can run without me, not a dependency on me.',
     },
     {
       title: 'The risky part goes first',
-      body: 'The assessment exists so the expensive decisions get made with real information. You find out what you are in for before you commit the budget, not halfway through it.',
+      body: 'The health check exists so the expensive decisions get made with real information. You find out what you are in for before you commit the budget, not halfway through it.',
     },
   ];
 }

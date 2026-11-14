@@ -3,14 +3,15 @@ import { RouterLink } from '@angular/router';
 import type { RouteMeta } from '@analogjs/router';
 import { CtaComponent } from '../components/cta/cta.component';
 import { pageMeta, pageTitle } from '../seo';
+import { placeholders, site } from '../site.config';
 
 const description =
-  'Three ways to work with Matt Verry on legacy .NET and Angular systems: a fixed-fee modernization assessment, full migration and modernization delivery, and fractional technical leadership.';
+  'Three ways to work with Lyra on inventory and construction build-out systems: a fixed-fee inventory data health check (the assessment), retiring one legacy inventory tool at a fixed price, and senior .NET and Angular help embedded with integrators.';
 
 export const routeMeta: RouteMeta = {
   title: pageTitle('Services'),
   meta: pageMeta({
-    title: 'Services — Legacy .NET & Angular Modernization',
+    title: `Services · ${site.name}`,
     description,
     path: '/services',
   }),
@@ -24,12 +25,12 @@ export const routeMeta: RouteMeta = {
       <div class="max-w-4xl mx-auto px-6 py-20 md:py-28">
         <p class="text-accent-300 font-medium mb-5 text-sm tracking-wide uppercase">Services</p>
         <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
-          Engagements sized to the decision in front of you
+          Fixed scope, fixed price, a clear finish line
         </h1>
         <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-2xl">
           You should not have to sign a six-figure delivery contract to find out whether
-          a modernization is feasible. So the work is structured in stages, and the first
-          one is small on purpose.
+          an aging inventory tool can be retired. So the work comes in stages, and the
+          first one is small on purpose.
         </p>
       </div>
     </section>
@@ -131,9 +132,9 @@ export const routeMeta: RouteMeta = {
         </h2>
         <div class="space-y-4 text-lg text-ink-600 leading-relaxed">
           <p>
-            Greenfield products on a stack I don't work in. Mobile apps. Data science
-            and ML platforms. Design-led marketing builds. Anything where you need a
-            team of ten starting Monday.
+            Greenfield products on a stack I don't work in. Native mobile apps. Data
+            science and ML platforms. Design-led marketing builds. Anything where you
+            need a team of ten starting Monday.
           </p>
           <p>
             If that's what you're after, say so in your first email and I'll tell you
@@ -159,95 +160,95 @@ export default class ServicesPageComponent {
     {
       id: 'assessment',
       stage: 'Step one',
-      shape: 'Fixed fee, fixed scope',
-      title: 'Modernization Assessment',
+      shape: `One week · fixed fee: ${placeholders.assessmentPrice}`,
+      title: 'Inventory Data Health Check',
       summary:
-        "Before anyone commits to a migration budget, it is worth knowing what the migration actually is. The assessment is a short, self-contained engagement that produces a written plan — and the plan is yours regardless of what you do next.",
+        'Before anyone commits budget to replacing a system, it is worth knowing what the replacement actually involves. The health check is a one-week, self-contained assessment that ends in a written plan, and the plan is yours whatever you do next.',
       deliverablesLabel: 'What you get',
       deliverables: [
-        'A complete inventory of frameworks, packages, and runtimes, with end-of-life dates',
-        'Risks ranked by business exposure — what actually threatens the operation, not a raw vulnerability dump',
-        'A staged migration plan, sequenced so each stage ships on its own',
-        'Effort estimates per stage, honest about what is uncertain and why',
-        'Quick wins your team can pick up immediately, without waiting on me',
-        'A walkthrough call with your engineers and whoever holds the budget',
+        'A map of every system that holds inventory or build-out data, and how they talk to each other',
+        'Where counts drift between systems, and the cause of each gap',
+        'Every place data gets re-keyed by hand, with the hours it costs',
+        "The legacy tool's risks, ranked by business exposure rather than a raw vulnerability list",
+        'A fixed quote and switch-off date for retiring it, if that is the right call',
+        'A walkthrough with your team and whoever holds the budget',
       ],
       fitFor: [
-        'You know the system is behind but cannot yet defend a number to your board',
-        'You have been quoted for a rewrite and want a second opinion on whether that is really necessary',
-        'An audit, insurer, or customer has raised your framework versions in writing',
-        'You are deciding between modernizing and replacing, and need the real comparison',
+        'Nobody trusts the counts without a recount',
+        'You know the tool is behind but cannot yet defend a number to the people who approve budget',
+        'You have been quoted for a full rewrite and want a second opinion',
+        'An audit, an ERP upgrade or a new site is forcing the question',
       ],
       howItStarts:
-        'An email describing what you run and what is forcing the change. If it looks like a fit, we spend half an hour on a call, then I send a scope and a fixed price before any money changes hands.',
+        'A 20-minute call about what you run and what is forcing the change. If it looks like a fit, I send a scope and the fixed fee in writing before any money changes hands.',
     },
     {
       id: 'migration',
-      stage: 'The main event',
-      shape: 'Project-based, staged delivery',
-      title: 'Migration & Modernization',
+      stage: 'The main offer',
+      shape: `${placeholders.retireWeeks} weeks · fixed price: ${placeholders.retirePrice}`,
+      title: 'Retire One Legacy Inventory Tool',
       summary:
-        'The build itself. Framework upgrades, re-platforming, and the deployment machinery to support them — delivered incrementally against the live system, so the application keeps shipping the whole way through.',
-      deliverablesLabel: 'Typical scope',
+        'One aging tool, replaced and switched off. The new system runs side by side with the old one until an agreed date, so the operation never stops. A fixed price is often small enough to approve without a procurement cycle.',
+      deliverablesLabel: 'How it runs',
       deliverables: [
-        'AngularJS and out-of-support Angular versions brought to current Angular',
-        '.NET Framework applications moved to modern .NET',
-        'On-premise workloads re-platformed to Azure, with infrastructure as code',
-        'CI/CD pipelines replacing manual deploys, with a rollback that has been tested',
-        'A test suite where there was not one, focused on what would actually hurt if it broke',
-        'Documentation and handover written for the team who will maintain it',
+        'A one-week assessment that locks the scope, the price and the switch-off date',
+        'The replacement built on modern .NET and Angular, in your cloud and your repository',
+        'Data migrated and reconciled against the old tool, so the counts agree before anyone switches',
+        'Both systems side by side, with crews moving over in stages rather than all at once',
+        'The old tool switched off on the agreed date',
+        'Documentation and handover written for the people who will run it',
       ],
       fitFor: [
-        'The application is business-critical and cannot go dark for a rewrite',
-        'You need feature work to continue during the migration, not after it',
-        'Both the front end and the back end need to move, and moving them separately has already been tried',
-        'You want the team to come out of it able to maintain what they are handed',
+        'One tool sits at the centre of the operation and cannot go dark for a rewrite',
+        'You want a fixed price and a finish date, not an open-ended project',
+        'The front end and the back end both need to move',
+        'You want your team to come out of it able to run what they are handed',
       ],
       howItStarts:
-        'Usually straight out of an assessment, because by then the scope is known and estimated. If you already have a plan you trust, I am happy to work to yours instead.',
+        'Usually straight out of a health check, because by then the scope is known and priced. If you already have a plan you trust, I am happy to work to yours instead.',
     },
     {
       id: 'fractional',
-      stage: 'Ongoing',
-      shape: 'Retained, part-time',
-      title: 'Fractional Technical Lead',
+      stage: 'For integrators',
+      shape: `Remote from Arizona · ${placeholders.embeddedHours} hours a week · ${placeholders.embeddedRate}`,
+      title: 'Embedded for Integrators',
       summary:
-        'Senior technical depth for a team that needs it but cannot justify another full-time hire — either alongside a migration, or afterwards to make sure the system does not drift straight back.',
-      deliverablesLabel: 'What the role covers',
+        "Senior .NET and Angular depth on your team's project, for integrators and consultancies delivering inventory, ERP or field systems who need someone who has built these before.",
+      deliverablesLabel: 'What I bring',
       deliverables: [
-        'Architecture decisions and technical direction, written down and defensible',
-        'Code review with standards your team keeps using once I am gone',
-        'Mentoring your developers on the modern stack, deliberately and continuously',
-        'Upgrade cadence, so framework versions never fall this far behind again',
-        'A known quantity to call when something breaks at an inconvenient hour',
+        'C#, ASP.NET Core and EF Core on the back end',
+        'Angular front ends that crews actually use in the field',
+        'Integration between inventory, ERP and field systems',
+        'Azure, PostgreSQL and CI/CD pipelines with tested rollbacks',
+        'Code review and documentation your team keeps using after I leave',
       ],
       fitFor: [
-        'A capable team that is missing seniority in this specific stack',
-        'You just finished a migration and want the discipline to stick',
-        'A technical lead left and you need cover while you hire properly',
-        'You want the option of continuity without a permanent headcount',
+        'You have won an inventory or build-out project and need senior hands on it',
+        'Your team is strong but missing depth in this stack or this domain',
+        'You need someone who can talk to the client\'s operations people as well as write the code',
+        'You want a known quantity without a permanent headcount',
       ],
       howItStarts:
-        'A conversation about what the team has, what it is missing, and how many days a month would close that gap. Arrangements are month to month — if it stops being worth it, it should be easy to stop.',
+        'A call about the project, what your team has and what it is missing. Arrangements are month to month, so if it stops being worth it, it is easy to stop.',
     },
   ];
 
   stack = [
     {
-      area: 'Front end',
-      items: ['Angular (current)', 'AngularJS migration', 'TypeScript', 'RxJS & signals', 'Tailwind CSS'],
+      area: 'Domain',
+      items: ['Inventory management', 'Construction build-out', 'ERP integration', 'Field data capture', 'Legacy replacement'],
     },
     {
       area: 'Back end',
-      items: ['C# / modern .NET', '.NET Framework', 'REST APIs', 'SQL Server', 'Entity Framework'],
+      items: ['C# / modern .NET', 'ASP.NET Core', 'Entity Framework Core', '.NET Framework', 'REST APIs'],
+    },
+    {
+      area: 'Front end & data',
+      items: ['Angular (current)', 'AngularJS migration', 'TypeScript', 'PostgreSQL', 'SQL Server'],
     },
     {
       area: 'Platform',
-      items: ['Azure', 'Infrastructure as code', 'Docker', 'CI/CD pipelines', 'Automated deploys'],
-    },
-    {
-      area: 'Practice',
-      items: ['Incremental migration', 'Automated testing', 'Code review', 'Technical documentation', 'Team mentoring'],
+      items: ['Azure', 'Infrastructure as code', 'Docker', 'CI/CD pipelines', 'Automated tests'],
     },
   ];
 }

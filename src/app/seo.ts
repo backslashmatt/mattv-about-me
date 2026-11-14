@@ -47,5 +47,5 @@ export function pageMeta({
   ];
 }
 
-/** Page titles read `<page> — Matt Verry` in the browser tab and SERPs. */
-export const pageTitle = (title: string): string => `${title} — ${site.name}`;
+/** Page titles read `<page> · Lyra` in the browser tab and SERPs. */
+export const pageTitle = (title: string): string => `${title} · ${site.name}`;

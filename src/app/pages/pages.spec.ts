@@ -31,24 +31,31 @@ const descriptionOf = (meta: typeof homeMeta) =>
 afterEach(() => TestBed.resetTestingModule());
 
 describe('Home page', () => {
-  it('should lead with the modernization problem rather than a job title', () => {
+  it('should lead with the domain rather than a job title', () => {
     const heading = render(HomePageComponent).querySelector('h1')?.textContent ?? '';
-    expect(heading).toContain('aging out from under you');
+    expect(heading).toContain('Inventory and build-out software');
   });
 
   it('should route the visitor to contact', () => {
     expect(render(HomePageComponent).querySelector('a[href="/contact"]')).not.toBeNull();
   });
 
-  it('should name the three engagement types', () => {
+  it('should name the three offers', () => {
     const text = render(HomePageComponent).textContent ?? '';
-    expect(text).toContain('Modernization Assessment');
-    expect(text).toContain('Migration & Modernization');
-    expect(text).toContain('Fractional Technical Lead');
+    expect(text).toContain('Inventory Data Health Check');
+    expect(text).toContain('Retire One Legacy Inventory Tool');
+    expect(text).toContain('Embedded for Integrators');
+  });
+
+  it('should link each offer to its section on the services page', () => {
+    const html = render(HomePageComponent);
+    for (const id of ['assessment', 'migration', 'fractional']) {
+      expect(html.querySelector(`a[href="/services#${id}"]`)).not.toBeNull();
+    }
   });
 
   it('should describe the offer in its meta description', () => {
-    expect(descriptionOf(homeMeta)).toContain('modernize');
+    expect(descriptionOf(homeMeta)).toContain('inventory and construction build-out');
   });
 });
 
@@ -72,8 +79,8 @@ describe('Services page', () => {
 });
 
 describe('About page', () => {
-  it('should position Matt as a consultant rather than a job seeker', () => {
-    expect(render(AboutPageComponent).textContent).toContain('Independent consultant');
+  it('should position Matt as independent rather than a job seeker', () => {
+    expect(render(AboutPageComponent).textContent).toContain('Independent senior developer');
   });
 
   it('should close with a call to action', () => {
@@ -81,7 +88,7 @@ describe('About page', () => {
   });
 
   it('should describe the consultancy in its meta description', () => {
-    expect(descriptionOf(aboutMeta)).toContain('independent consultant');
+    expect(descriptionOf(aboutMeta)).toContain('Lyra is his practice');
   });
 });
 
@@ -92,7 +99,7 @@ describe('Contact page', () => {
       ?.getAttribute('href');
 
     expect(href).toContain('mailto:');
-    expect(href).toContain('subject=Modernization%20enquiry');
+    expect(href).toContain('subject=Inventory%20system%20enquiry');
   });
 
   it('should set out what happens after the email', () => {
@@ -100,7 +107,7 @@ describe('Contact page', () => {
   });
 
   it('should carry its own meta description', () => {
-    expect(descriptionOf(contactMeta)).toContain('modernizing');
+    expect(descriptionOf(contactMeta)).toContain('20-minute call');
   });
 });
 

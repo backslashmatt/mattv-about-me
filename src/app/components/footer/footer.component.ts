@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SocialLinksComponent } from '../social-links/social-links.component';
-import { site } from '../../site.config';
+import { site, tagline } from '../../site.config';
 
 @Component({
   selector: 'app-footer',
@@ -12,10 +12,9 @@ import { site } from '../../site.config';
         <div class="grid gap-10 md:grid-cols-3">
           <!-- Identity -->
           <div class="md:col-span-1">
-            <p class="font-display text-3xl text-white mb-3">matt v</p>
+            <p class="font-display text-3xl text-white mb-3">{{ brand }}</p>
             <p class="text-sm leading-relaxed text-ink-400 max-w-xs">
-              Independent consultant. I modernize the legacy .NET and Angular
-              applications businesses still run on.
+              Matt Verry's independent practice in Arizona. {{ blurb }}
             </p>
           </div>
 
@@ -50,7 +49,7 @@ import { site } from '../../site.config';
         </div>
 
         <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-sm text-ink-400">
-          <p>&copy; {{ currentYear }} Matt Verry. All rights reserved.</p>
+          <p>&copy; {{ currentYear }} {{ legalName }} &middot; Arizona</p>
           <p>
             Built with
             <a href="https://analogjs.org" target="_blank" rel="noopener"
@@ -67,6 +66,9 @@ import { site } from '../../site.config';
 export class FooterComponent {
   currentYear = new Date().getFullYear();
   email = site.email;
+  brand = site.name;
+  legalName = site.legalName;
+  blurb = tagline;
 
   siteLinks = [
     { path: '/services', label: 'Services' },

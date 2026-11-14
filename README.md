@@ -1,47 +1,53 @@
-# Matt Verry - Consulting Site
+# Lyra - lyraapps.com
 
-The site for my independent consulting practice: modernizing legacy .NET and
-Angular applications. Built with [Analog](https://analogjs.org/),
-[Angular](https://angular.dev/) v22, and [Tailwind CSS](https://tailwindcss.com/),
-prerendered to static HTML and deployed on
-[Firebase Hosting](https://firebase.google.com/docs/hosting).
+The site for Lyra (Lyra Software Applications LLC), Matt Verry's independent
+practice in Arizona: fixing and replacing the inventory and construction
+build-out systems large operations depend on. Built with
+[Analog](https://analogjs.org/), [Angular](https://angular.dev/) v22, and
+[Tailwind CSS](https://tailwindcss.com/), prerendered to static HTML and
+deployed on [Firebase Hosting](https://firebase.google.com/docs/hosting).
 
 Inspired and based on [Nelson's blog](https://github.com/nelsongutidev).
 
 ## Who the site is for
 
-Every page is aimed at one reader: someone responsible for a business-critical
-.NET/Angular application that has fallen behind, who is under external pressure
-(an audit, a cloud mandate, an unsupported framework, a departure) to do
-something about it.
+Every page is aimed at one reader: someone responsible for the inventory or
+build-out system a large operation runs on, where counts drift between systems,
+crews re-key the same data, and the one tool everyone depends on is the one
+nobody wants to touch. The second reader is an integrator who needs senior
+.NET and Angular help on that kind of project.
 
-The site funnels that reader toward a single action — booking a fixed-fee
-**Modernization Assessment** — through a three-step service ladder:
+The site leads with the domain, not the stack, and funnels the reader toward a
+20-minute call through three offers:
 
-1. **Modernization Assessment** — small, fixed scope, ends in a written plan
-2. **Migration & Modernization** — the delivery engagement
-3. **Fractional Technical Lead** — retained, part-time continuity
+1. **Inventory Data Health Check** (`/services#assessment`): one week, fixed
+   fee, ends in a written plan and a fixed quote
+2. **Retire One Legacy Inventory Tool** (`/services#migration`): fixed weeks,
+   fixed price, old and new side by side until an agreed switch-off date
+3. **Embedded for Integrators** (`/services#fractional`): senior .NET and
+   Angular depth on an integrator's team
 
 Keep that reader in mind when changing copy. Anything that reads as a résumé
 rather than an offer is off-target.
 
 ### Before this goes live
 
-Two things need real values, and both are marked `TODO(matt)` in the source:
-
-- **Canonical domain.** `site.url` in `src/app/site.config.ts` and `SITE_URL` in
-  `vite.config.ts` both point at `https://matt-v.web.app`. They feed the sitemap,
-  canonical links, and Open Graph tags, so update both (and the `Sitemap:` line in
-  `public/robots.txt`) once a custom domain is attached.
-- **Prices.** The services copy says "fixed fee" without naming a number, because
-  I did not have your real rates. Adding concrete figures to
-  `src/app/pages/services.page.ts` will convert considerably better than leaving
-  the buyer to guess.
+- **Fill the placeholders.** Facts only Matt can give live in `placeholders` in
+  `src/app/site.config.ts` and render on the site exactly as written, so the
+  bracketed text (`[YEARS]`, `[WEEKS]`, `[ASSESSMENT PRICE]`,
+  `[RETIREMENT PRICE]`, `[HOURS]`, `[DAY RATE OR MONTHLY RETAINER]`,
+  `[EXAMPLE RESULT: ...]`) stays visible until replaced. Search the repo for
+  `placeholders.` to see every use.
+- **Point lyraapps.com at Firebase Hosting.** `site.url`, `SITE_URL` in
+  `vite.config.ts` and the `Sitemap:` line in `public/robots.txt` already use
+  `https://lyraapps.com`; the domain has to be connected to this Firebase site.
+- **Social links.** `twitterHandle` in `site.config.ts` and the links in
+  `social-links` still point at existing personal accounts; drop any that are
+  no longer used.
 
 Worth adding when you have them: named client work, outcomes with numbers
-attached, and testimonials. There is no placeholder markup for these — invented
-proof would be worse than none — but they are the single biggest missing
-credibility signal on the site.
+attached, and testimonials. Invented proof would be worse than none, which is
+why the example result is a visible placeholder.
 
 ## Structure
 
@@ -52,7 +58,7 @@ credibility signal on the site.
 | `/about` | `src/app/pages/about.page.ts` | Credibility for a buyer evaluating a consultant |
 | `/contact` | `src/app/pages/contact.page.ts` | The conversion destination |
 | `/blog` | `src/app/pages/blog/index.page.ts` | Writing, as supporting authority |
-| `*` | `src/app/pages/[...not-found].page.ts` | 404, marked `noindex` |
+| `*` | `src/app/pages/[...not-found].page.ts` | 404, marked `noindex`; also built as `404.html` |
 
 Shared pieces live in `src/app/components/`: `header`, `footer`, `social-links`,
 and `cta` (the closing call-to-action band reused across marketing pages).
@@ -89,6 +95,11 @@ time and the output is plain static files.
 
 The build also emits `sitemap.xml`. Draft posts (`published: false`) are excluded
 from both the prerender and the sitemap.
+
+`/404` is prerendered too, and `scripts/postbuild-404.mjs` (run automatically as
+`postbuild`) moves it to `404.html` and drops it from the sitemap. Hosting has no
+catch-all rewrite, so a path with no file gets that page with a real HTTP 404
+status instead of the home page with a 200.
 
 ### SEO
 
