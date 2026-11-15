@@ -34,9 +34,9 @@ export const routeMeta: RouteMeta = {
     <div class="max-w-3xl mx-auto px-6 py-16 md:py-24">
       <h1 class="text-4xl md:text-5xl font-bold text-ink-900 tracking-tight mb-4">Writing</h1>
       <p class="text-lg text-ink-600 leading-relaxed mb-12 max-w-2xl">
-        Notes from inside older codebases &mdash; migration patterns, framework upgrades,
-        and the problems that turn up again and again once an application has been in
-        production long enough.
+        Notes on inventory and build-out systems and the .NET and Angular code
+        underneath them: replacement patterns, data that drifts, and the problems that
+        turn up again and again once a system has been in production long enough.
       </p>
 
       @if (posts.length === 0) {
@@ -74,7 +74,7 @@ export const routeMeta: RouteMeta = {
 
     <app-cta
       heading="Reading this because you have one of these systems?"
-      body="If the codebase behind the question is one you are responsible for, an assessment turns it into a plan with dates and numbers attached." />
+      body="If you are responsible for the system behind the question, the Inventory Data Health Check turns it into a plan with a fixed quote and a switch-off date." />
   `,
 })
 export default class BlogListPageComponent {

@@ -15,8 +15,10 @@ html, body {
   margin: 0;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Visible focus for keyboard users on every interactive element. */

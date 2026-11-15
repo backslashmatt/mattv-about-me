@@ -24,7 +24,9 @@ describe('CanonicalLinkService', () => {
           { path: '', component: BlankComponent },
           { path: 'services', component: BlankComponent },
           { path: 'old', redirectTo: 'services' },
-          { path: '**', component: BlankComponent },
+          // Analog's shape for the [...not-found] page: the page sits in a
+          // child with path '' under the '**' route.
+          { path: '**', children: [{ path: '', component: BlankComponent }] },
         ]),
       ],
     });
@@ -64,6 +66,33 @@ describe('CanonicalLinkService', () => {
     await router.navigateByUrl('/no/such/page');
 
     expect(canonical()).toBeUndefined();
+  });
+
+  it('should remove a leftover noindex once a real page loads', async () => {
+    const robots = document.createElement('meta');
+    robots.setAttribute('name', 'robots');
+    robots.setAttribute('content', 'noindex');
+    document.head.appendChild(robots);
+
+    service.init();
+    await router.navigateByUrl('/no/such/page');
+    expect(document.head.querySelector('meta[name="robots"]')).not.toBeNull();
+
+    await router.navigateByUrl('/services');
+    expect(document.head.querySelector('meta[name="robots"]')).toBeNull();
+  });
+
+  it('should keep og:url on the canonical URL', async () => {
+    const ogUrl = document.createElement('meta');
+    ogUrl.setAttribute('property', 'og:url');
+    ogUrl.setAttribute('content', `${site.url}/`);
+    document.head.appendChild(ogUrl);
+
+    service.init();
+    await router.navigateByUrl('/services');
+
+    expect(ogUrl.getAttribute('content')).toBe(`${site.url}/services`);
+    ogUrl.remove();
   });
 
   it('should follow redirects to the destination URL', async () => {

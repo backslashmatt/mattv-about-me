@@ -37,7 +37,9 @@ export default defineConfig({
           {
             contentDir: 'src/content/blog',
             transform: (file) => {
-              // Drafts stay out of the static build and the sitemap.
+              // Drafts are not prerendered or listed in the sitemap. They are
+              // still bundled and routable in the browser (Analog routes every
+              // file in src/content), so keep anything private out of it.
               if (!file.attributes['published']) return false;
               const slug = file.attributes['slug'] || file.name;
               return `/blog/${slug}`;

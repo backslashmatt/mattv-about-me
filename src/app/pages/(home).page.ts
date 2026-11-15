@@ -36,7 +36,7 @@ export const routeMeta: RouteMeta = {
             <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-xl mb-9">
               I'm Matt Verry, and Lyra is my independent practice in Arizona. I fix and
               replace the inventory and construction build-out systems large operations
-              depend on, with a fixed scope and a clear finish line.
+              depend on, usually at a fixed price with a clear finish line.
             </p>
             <div class="flex flex-wrap gap-4">
               <a routerLink="/contact"

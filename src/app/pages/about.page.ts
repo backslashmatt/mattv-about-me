@@ -64,8 +64,8 @@ export const routeMeta: RouteMeta = {
             </p>
             <p>
               Lyra is how I work with clients directly. I fix and replace the inventory
-              and build-out systems large operations depend on, with a fixed scope and a
-              clear finish line.
+              and build-out systems large operations depend on, usually at a fixed price
+              with a clear finish line.
             </p>
           </div>
 

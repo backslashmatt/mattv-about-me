@@ -25,7 +25,7 @@ export const routeMeta: RouteMeta = {
       <div class="max-w-4xl mx-auto px-6 py-20 md:py-28">
         <p class="text-accent-300 font-medium mb-5 text-sm tracking-wide uppercase">Services</p>
         <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
-          Fixed scope, fixed price, a clear finish line
+          Two fixed-price offers, and help for integrators
         </h1>
         <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-2xl">
           You should not have to sign a six-figure delivery contract to find out whether
