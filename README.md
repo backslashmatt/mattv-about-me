@@ -1,8 +1,62 @@
-# Matt Verry - Personal Site
+# Lyra - lyraapps.com
 
-My personal site and blog, built with [Analog](https://analogjs.org/), [Angular](https://angular.dev/) v22, and [Tailwind CSS](https://tailwindcss.com/). Deployed on [Firebase Hosting](https://firebase.google.com/docs/hosting).
+The site for Lyra (Lyra Software Applications LLC), Matt Verry's independent
+practice in Arizona: fixing and replacing the inventory and construction
+build-out systems large operations depend on. Built with
+[Analog](https://analogjs.org/), [Angular](https://angular.dev/) v22, and
+[Tailwind CSS](https://tailwindcss.com/), prerendered to static HTML and
+deployed on [Firebase Hosting](https://firebase.google.com/docs/hosting).
 
 Inspired and based on [Nelson's blog](https://github.com/nelsongutidev).
+
+## Who the site is for
+
+Every page is aimed at one reader: someone responsible for the inventory or
+build-out system a large operation runs on, where counts drift between systems,
+crews re-key the same data, and the one tool everyone depends on is the one
+nobody wants to touch. The second reader is an integrator who needs senior
+.NET and Angular help on that kind of project.
+
+The site leads with the domain, not the stack, and funnels the reader toward a
+call through three offers:
+
+1. **Inventory Data Health Check** (`/services#assessment`): a short assessment
+   that ends in a written plan
+2. **Retire One Legacy Inventory Tool** (`/services#migration`): old and new
+   side by side until an agreed switch-off date
+3. **Embedded for Integrators** (`/services#fractional`): senior .NET and
+   Angular depth on an integrator's team
+
+Keep that reader in mind when changing copy. Anything that reads as a résumé
+rather than an offer is off-target.
+
+### Before this goes live
+
+- **Point lyraapps.com at Firebase Hosting.** `site.url`, `SITE_URL` in
+  `vite.config.ts` and the `Sitemap:` line in `public/robots.txt` already use
+  `https://lyraapps.com`; the domain has to be connected to this Firebase site.
+- **Social links.** `twitterHandle` in `site.config.ts` and the links in
+  `social-links` still point at existing personal accounts; drop any that are
+  no longer used.
+
+The site describes what Lyra does and leaves rates, prices, engagement lengths
+and hours to a conversation (Matt's call, Nov 2026). Keep them off the pages.
+Worth adding when you have them: named client work and testimonials. Invented
+proof would be worse than none.
+
+## Structure
+
+| Route | File | Purpose |
+| --- | --- | --- |
+| `/` | `src/app/pages/(home).page.ts` | Positioning, symptoms, service ladder, principles |
+| `/services` | `src/app/pages/services.page.ts` | The three engagements in detail |
+| `/about` | `src/app/pages/about.page.ts` | Credibility for a buyer evaluating a consultant |
+| `/contact` | `src/app/pages/contact.page.ts` | The conversion destination |
+| `/blog` | `src/app/pages/blog/index.page.ts` | Writing, as supporting authority |
+| `*` | `src/app/pages/[...not-found].page.ts` | 404, marked `noindex`; also built as `404.html` |
+
+Shared pieces live in `src/app/components/`: `header`, `footer`, `social-links`,
+and `cta` (the closing call-to-action band reused across marketing pages).
 
 ## Requirements
 
@@ -28,6 +82,28 @@ npm run build
 Output is generated in `dist/analog/public` for static hosting, which is the
 directory Firebase Hosting serves (see `firebase.json`).
 
+Every route is **prerendered to static HTML** at build time (`ssr: true` plus
+`static: true` in `vite.config.ts`). This matters: without it the site ships as
+an empty shell, and search crawlers and link unfurlers see no content, title, or
+description. There is no server to deploy — the prerender pass runs at build
+time and the output is plain static files.
+
+The build also emits `sitemap.xml`. Draft posts (`published: false`) are excluded
+from both the prerender and the sitemap.
+
+`/404` is prerendered too, and `scripts/postbuild-404.mjs` (run automatically as
+`postbuild`) moves it to `404.html` and drops it from the sitemap. Hosting has no
+catch-all rewrite, so a path with no file gets that page with a real HTTP 404
+status instead of the home page with a 200.
+
+### SEO
+
+Each page exports a `routeMeta` with a `title` and the tag set built by
+`pageMeta()` in `src/app/seo.ts` (description, Open Graph, Twitter card).
+`CanonicalLinkService` maintains the `<link rel="canonical">`, since route
+metadata can carry meta tags but not link tags. All of it is baked into the
+prerendered HTML.
+
 ## Tests
 
 ```bash
@@ -37,9 +113,17 @@ npm test
 Vitest runs the specs in `src/**/*.spec.ts` in a jsdom environment, using
 `vitest.config.ts` (separate from the app's `vite.config.ts`).
 
+The page specs in `src/app/pages/pages.spec.ts` assert on positioning copy and
+the presence of the contact route on purpose — they are there to catch a
+well-meaning edit that quietly turns the site back into a résumé.
+
 ## Blog
 
-Blog posts are markdown files in `src/content/blog/`. Add a new `.md` file with frontmatter to create a post:
+Blog posts are markdown files in `src/content/blog/`. They are presented as
+"Writing" and exist to demonstrate depth to a prospective client, so posts about
+migration problems pull more weight here than general tutorials.
+
+Add a new `.md` file with frontmatter to create a post:
 
 ```markdown
 ---
@@ -55,7 +139,9 @@ slug: 'my-post'
 Your content here...
 ```
 
-Posts with `published: true` will appear on the blog page automatically.
+Posts with `published: true` appear on the blog page automatically, and are
+prerendered and added to the sitemap. Posts with `published: false` are excluded
+from the build entirely.
 
 ## Can I use this project?
 
