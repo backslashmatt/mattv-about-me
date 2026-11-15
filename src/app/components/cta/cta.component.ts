@@ -34,6 +34,6 @@ import { RouterLink } from '@angular/router';
 export class CtaComponent {
   heading = input('Find out what retiring that tool actually involves.');
   body = input(
-    'The health check ends in a written plan for retiring it. There is no commitment to the build, and you keep the plan either way.'
+    'The health check ends in a written plan for what to do about it. There is no commitment to the build, and you keep the plan either way.'
   );
 }

@@ -106,8 +106,7 @@ export const routeMeta: RouteMeta = {
             their notice.
           </p>
           <p class="text-ink-900 font-medium">
-            I've spent my career building and rescuing these systems for large
-            enterprises. I replace the one tool everyone depends on, side by side with
+            I build and rescue these systems for large enterprises. I replace the one tool everyone depends on, side by side with
             the old one, with a date it gets switched off.
           </p>
         </div>

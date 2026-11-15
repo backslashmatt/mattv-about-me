@@ -56,7 +56,7 @@ export const routeMeta: RouteMeta = {
               site.
             </p>
             <p>
-              Much of that time has been spent inside systems other people built.
+              A lot of that work has been inside systems other people built.
               Plenty of developers can start something new. Far fewer are willing to open a
               ten-year-old codebase that nobody has documented, work out what it
               actually does, and move it forward without breaking the business that

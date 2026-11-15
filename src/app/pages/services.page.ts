@@ -25,7 +25,7 @@ export const routeMeta: RouteMeta = {
       <div class="max-w-4xl mx-auto px-6 py-20 md:py-28">
         <p class="text-accent-300 font-medium mb-5 text-sm tracking-wide uppercase">Services</p>
         <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
-          Three ways to work together
+          How I can help
         </h1>
         <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-2xl">
           You should not have to commit to a full rewrite to find out whether an aging
@@ -160,7 +160,7 @@ export default class ServicesPageComponent {
     {
       id: 'assessment',
       stage: 'Step one',
-      shape: 'A short, self-contained assessment',
+      shape: 'Ends in a written plan you keep',
       title: 'Inventory Data Health Check',
       summary:
         'Before anyone commits budget to replacing a system, it is worth knowing what the replacement actually involves. The health check is a short, self-contained assessment that ends in a written plan, and the plan is yours whatever you do next.',
@@ -185,7 +185,7 @@ export default class ServicesPageComponent {
     {
       id: 'migration',
       stage: 'The main offer',
-      shape: 'Replaced side by side, then switched off',
+      shape: 'Old and new run side by side',
       title: 'Retire One Legacy Inventory Tool',
       summary:
         'One aging tool, replaced and switched off. The new system runs side by side with the old one until an agreed date, so the operation never stops.',

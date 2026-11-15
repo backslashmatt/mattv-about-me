@@ -24,6 +24,5 @@ export const site = {
 export const tagline =
   'I fix and replace the inventory and construction build-out systems large operations depend on.';
 
-
 export const absoluteUrl = (path: string): string =>
   `${site.url}${path.startsWith('/') ? path : `/${path}`}`;

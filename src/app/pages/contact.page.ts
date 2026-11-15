@@ -28,7 +28,7 @@ export const routeMeta: RouteMeta = {
         </h1>
         <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-2xl mb-9">
           No form, no funnel, no discovery questionnaire. One email to me, read by me,
-          and we find 20 minutes to talk. If I'm not the right person for the job,
+          and we set up a call. If I'm not the right person for the job,
           you'll get a straight answer in the first reply.
         </p>
         <a [href]="mailto"
@@ -155,7 +155,7 @@ export default class ContactPageComponent {
     },
     {
       title: 'A written scope',
-      detail: 'In writing, before you commit to anything. If it is not right, that is a perfectly fine place to stop.',
+      detail: 'Before you commit to anything. If it is not right, that is a perfectly fine place to stop.',
     },
   ];
 
