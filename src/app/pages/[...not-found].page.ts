@@ -7,6 +7,9 @@ export const routeMeta: RouteMeta = {
   title: pageTitle('Page not found'),
   meta: [
     { name: 'description', content: 'This page does not exist.' },
+    // Without these a pasted dead link would unfurl as the home page's card.
+    { property: 'og:title', content: pageTitle('Page not found') },
+    { property: 'og:description', content: 'This page does not exist.' },
     // Keep dead URLs out of the index rather than letting them rank.
     { name: 'robots', content: 'noindex' },
   ],

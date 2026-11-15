@@ -43,16 +43,25 @@ console.log('postbuild-404: wrote 404.html and removed /404 from the sitemap');
 // the pages, so bracketed blanks can't reach lyraapps.com. PR previews and local
 // builds still pass, so the blanks stay visible there for review.
 if (process.env.GITHUB_REF === 'refs/heads/main' || process.env.REQUIRE_FINAL_COPY === '1') {
-  const placeholder =
-    /\[(?:YEARS|WEEKS|HOURS|ASSESSMENT PRICE|RETIREMENT PRICE|DAY RATE OR MONTHLY RETAINER|EXAMPLE RESULT)\b[^\]]*\]/;
+  // Take the markers straight from site.config.ts so a renamed or new
+  // placeholder is caught too. Only the part before any ':' is matched, which
+  // covers markers like "[EXAMPLE RESULT: ...]".
+  const config = readFileSync(join(process.cwd(), 'src/app/site.config.ts'), 'utf8');
+  const block = config.slice(config.indexOf('export const placeholders'));
+  const markers = [...block.slice(0, block.indexOf('};')).matchAll(/'(\[[^'\]:]+)[^']*\]'/g)].map((m) => m[1]);
+  if (!markers.length) {
+    console.error('postbuild-404: found no placeholders in src/app/site.config.ts; check this script');
+    process.exit(1);
+  }
   const found = [];
   const walk = (dir) => {
     for (const entry of readdirSync(dir, { withFileTypes: true })) {
       const path = join(dir, entry.name);
       if (entry.isDirectory()) walk(path);
       else if (entry.name.endsWith('.html') || entry.name.endsWith('.js')) {
-        const match = readFileSync(path, 'utf8').match(placeholder);
-        if (match) found.push(`${path.slice(publicDir.length + 1)}: ${match[0]}`);
+        const text = readFileSync(path, 'utf8');
+        const hits = markers.filter((m) => text.includes(m));
+        if (hits.length) found.push(`${path.slice(publicDir.length + 1)}: ${hits.map((m) => `${m}]`).join(', ')}`);
       }
     }
   };

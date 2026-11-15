@@ -34,7 +34,14 @@ describe('CanonicalLinkService', () => {
     service = TestBed.inject(CanonicalLinkService);
     router = TestBed.inject(Router);
     document = TestBed.inject(DOCUMENT);
-    document.head.querySelectorAll('link[rel="canonical"]').forEach((el) => el.remove());
+    document.head
+      .querySelectorAll('link[rel="canonical"], meta[name="robots"], meta[property="og:url"]')
+      .forEach((el) => el.remove());
+  });
+
+  it('should not set a canonical before the first navigation', () => {
+    service.init();
+    expect(canonical()).toBeUndefined();
   });
 
   it('should add a canonical link for the current route', async () => {

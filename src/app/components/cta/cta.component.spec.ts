@@ -22,7 +22,7 @@ describe('CtaComponent', () => {
     expect(primary?.textContent?.trim()).toBe('Book a 20-minute call');
   });
 
-  it('should offer the fixed-scope offer on services as the secondary action', () => {
+  it('should offer the fixed-price offer on services as the secondary action', () => {
     expect(html().querySelector('a[href="/services#migration"]')).not.toBeNull();
   });
 

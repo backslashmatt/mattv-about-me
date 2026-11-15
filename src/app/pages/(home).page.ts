@@ -45,7 +45,7 @@ export const routeMeta: RouteMeta = {
               </a>
               <a routerLink="/services" fragment="migration"
                  class="px-7 py-3.5 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/15">
-                See the fixed-scope offer
+                See the fixed-price offer
               </a>
             </div>
           </div>
@@ -310,7 +310,7 @@ export default class HomePageComponent {
     },
     {
       title: 'There is a finish line',
-      body: 'Fixed scope, fixed price and a switch-off date agreed before the work starts. You know what done looks like, and when.',
+      body: 'The health check and the retirement work come with a fixed price, a fixed scope and a switch-off date, agreed before the work starts. You know what done looks like, and when.',
     },
     {
       title: 'Your team ends up owning it',

@@ -24,7 +24,7 @@ import { RouterLink } from '@angular/router';
           </a>
           <a routerLink="/services" fragment="migration"
              class="px-7 py-3.5 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/15">
-            See the fixed-scope offer
+            See the fixed-price offer
           </a>
         </div>
       </div>
