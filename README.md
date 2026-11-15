@@ -18,12 +18,12 @@ nobody wants to touch. The second reader is an integrator who needs senior
 .NET and Angular help on that kind of project.
 
 The site leads with the domain, not the stack, and funnels the reader toward a
-20-minute call through three offers:
+call through three offers:
 
-1. **Inventory Data Health Check** (`/services#assessment`): one week, fixed
-   fee, ends in a written plan and a fixed quote
-2. **Retire One Legacy Inventory Tool** (`/services#migration`): fixed weeks,
-   fixed price, old and new side by side until an agreed switch-off date
+1. **Inventory Data Health Check** (`/services#assessment`): a short assessment
+   that ends in a written plan
+2. **Retire One Legacy Inventory Tool** (`/services#migration`): old and new
+   side by side until an agreed switch-off date
 3. **Embedded for Integrators** (`/services#fractional`): senior .NET and
    Angular depth on an integrator's team
 
@@ -32,12 +32,6 @@ rather than an offer is off-target.
 
 ### Before this goes live
 
-- **Fill the placeholders.** Facts only Matt can give live in `placeholders` in
-  `src/app/site.config.ts` and render on the site exactly as written, so the
-  bracketed text (`[YEARS]`, `[WEEKS]`, `[ASSESSMENT PRICE]`,
-  `[RETIREMENT PRICE]`, `[HOURS]`, `[DAY RATE OR MONTHLY RETAINER]`,
-  `[EXAMPLE RESULT: ...]`) stays visible until replaced. Search the repo for
-  `placeholders.` to see every use.
 - **Point lyraapps.com at Firebase Hosting.** `site.url`, `SITE_URL` in
   `vite.config.ts` and the `Sitemap:` line in `public/robots.txt` already use
   `https://lyraapps.com`; the domain has to be connected to this Firebase site.
@@ -45,9 +39,10 @@ rather than an offer is off-target.
   `social-links` still point at existing personal accounts; drop any that are
   no longer used.
 
-Worth adding when you have them: named client work, outcomes with numbers
-attached, and testimonials. Invented proof would be worse than none, which is
-why the example result is a visible placeholder.
+The site describes what Lyra does and leaves rates, prices, engagement lengths
+and hours to a conversation (Matt's call, Nov 2026). Keep them off the pages.
+Worth adding when you have them: named client work and testimonials. Invented
+proof would be worse than none.
 
 ## Structure
 

@@ -5,7 +5,7 @@
 // 404/index.html and lists it in the sitemap. This moves it to 404.html, drops
 // its canonical link (a not-found page has no canonical URL) and takes it out
 // of the sitemap. Runs automatically after `npm run build`.
-import { existsSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const publicDir = join(import.meta.dirname, '..', 'dist', 'analog', 'public');
@@ -37,38 +37,3 @@ if (existsSync(sitemap)) {
 }
 
 console.log('postbuild-404: wrote 404.html and removed /404 from the sitemap');
-
-// The live deploy runs on a push to main (firebase-hosting-merge.yml). Refuse
-// to build it while any `placeholders` value from site.config.ts is still in
-// the pages, so bracketed blanks can't reach lyraapps.com. PR previews and local
-// builds still pass, so the blanks stay visible there for review.
-if (process.env.GITHUB_REF === 'refs/heads/main' || process.env.REQUIRE_FINAL_COPY === '1') {
-  // Take the markers straight from site.config.ts so a renamed or new
-  // placeholder is caught too. Only the part before any ':' is matched, which
-  // covers markers like "[EXAMPLE RESULT: ...]".
-  const config = readFileSync(join(process.cwd(), 'src/app/site.config.ts'), 'utf8');
-  const block = config.slice(config.indexOf('export const placeholders'));
-  const markers = [...block.slice(0, block.indexOf('};')).matchAll(/'(\[[^'\]:]+)[^']*\]'/g)].map((m) => m[1]);
-  if (!markers.length) {
-    console.error('postbuild-404: found no placeholders in src/app/site.config.ts; check this script');
-    process.exit(1);
-  }
-  const found = [];
-  const walk = (dir) => {
-    for (const entry of readdirSync(dir, { withFileTypes: true })) {
-      const path = join(dir, entry.name);
-      if (entry.isDirectory()) walk(path);
-      else if (entry.name.endsWith('.html') || entry.name.endsWith('.js')) {
-        const text = readFileSync(path, 'utf8');
-        const hits = markers.filter((m) => text.includes(m));
-        if (hits.length) found.push(`${path.slice(publicDir.length + 1)}: ${hits.map((m) => `${m}]`).join(', ')}`);
-      }
-    }
-  };
-  walk(publicDir);
-  if (found.length) {
-    console.error('postbuild-404: placeholders still in the build; fill `placeholders` in src/app/site.config.ts:');
-    for (const line of found) console.error(`  ${line}`);
-    process.exit(1);
-  }
-}

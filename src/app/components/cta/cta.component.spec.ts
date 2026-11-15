@@ -19,10 +19,10 @@ describe('CtaComponent', () => {
 
   it('should point at contact as the primary action', () => {
     const primary = html().querySelector('a[href="/contact"]');
-    expect(primary?.textContent?.trim()).toBe('Book a 20-minute call');
+    expect(primary?.textContent?.trim()).toBe('Book a call');
   });
 
-  it('should offer the fixed-price offer on services as the secondary action', () => {
+  it('should offer the retirement offer on services as the secondary action', () => {
     expect(html().querySelector('a[href="/services#migration"]')).not.toBeNull();
   });
 

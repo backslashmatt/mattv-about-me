@@ -74,7 +74,7 @@ export const routeMeta: RouteMeta = {
 
     <app-cta
       heading="Reading this because you have one of these systems?"
-      body="If you are responsible for the system behind the question, the Inventory Data Health Check turns it into a plan with a fixed quote and a switch-off date." />
+      body="If you are responsible for the system behind the question, the Inventory Data Health Check turns it into a plan with a switch-off date." />
   `,
 })
 export default class BlogListPageComponent {

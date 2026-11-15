@@ -6,7 +6,7 @@ import { pageMeta, pageTitle } from '../seo';
 import { site } from '../site.config';
 
 const description =
-  'Book a 20-minute call with Lyra about the inventory or build-out system you want fixed or replaced. What to include, what happens next, and how quickly you will hear back.';
+  'Book a call with Lyra about the inventory or build-out system you want fixed or replaced. What to include, what happens next, and how quickly you will hear back.';
 
 export const routeMeta: RouteMeta = {
   title: pageTitle('Contact'),
@@ -150,12 +150,12 @@ export default class ContactPageComponent {
       detail: 'Either with questions, or with the honest answer that this is not something I should take on.',
     },
     {
-      title: 'A 20-minute call',
+      title: 'A call',
       detail: 'No slides, no pitch deck. Mostly me asking about the system and how it got here.',
     },
     {
-      title: 'A written scope and a fixed price',
-      detail: 'For the health check, in writing, before you commit to anything. If it is not right, that is a perfectly fine place to stop.',
+      title: 'A written scope',
+      detail: 'In writing, before you commit to anything. If it is not right, that is a perfectly fine place to stop.',
     },
   ];
 
@@ -170,7 +170,7 @@ export default class ContactPageComponent {
     },
     {
       title: 'Early questions are welcome',
-      body: 'You do not need approved budget or a decision to email. Working out whether this is even the right project is part of the job.',
+      body: 'You do not need a decision made to email. Working out whether this is even the right project is part of the job.',
     },
   ];
 }

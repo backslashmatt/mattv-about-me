@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import type { RouteMeta } from '@analogjs/router';
 import { CtaComponent } from '../components/cta/cta.component';
 import { pageMeta } from '../seo';
-import { placeholders, site, tagline } from '../site.config';
+import { site, tagline } from '../site.config';
 
 const title = `${site.name} · Inventory and build-out systems`;
 
@@ -36,16 +36,16 @@ export const routeMeta: RouteMeta = {
             <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-xl mb-9">
               I'm Matt Verry, and Lyra is my independent practice in Arizona. I fix and
               replace the inventory and construction build-out systems large operations
-              depend on, usually at a fixed price with a clear finish line.
+              depend on.
             </p>
             <div class="flex flex-wrap gap-4">
               <a routerLink="/contact"
                  class="px-7 py-3.5 bg-accent-500 text-ink-950 rounded-lg font-semibold hover:bg-accent-400 transition-colors">
-                Book a 20-minute call
+                Book a call
               </a>
               <a routerLink="/services" fragment="migration"
                  class="px-7 py-3.5 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/15">
-                See the fixed-price offer
+                See how a retirement works
               </a>
             </div>
           </div>
@@ -106,7 +106,7 @@ export const routeMeta: RouteMeta = {
             their notice.
           </p>
           <p class="text-ink-900 font-medium">
-            I've spent {{ years }} years building and rescuing these systems for large
+            I've spent my career building and rescuing these systems for large
             enterprises. I replace the one tool everyone depends on, side by side with
             the old one, with a date it gets switched off.
           </p>
@@ -126,7 +126,7 @@ export const routeMeta: RouteMeta = {
             build-out for large enterprises.
           </p>
         </div>
-        <div class="grid md:grid-cols-3 gap-6 mb-10">
+        <div class="grid md:grid-cols-3 gap-6">
           @for (area of areas; track area.title) {
             <div class="bg-white rounded-xl p-6 border border-ink-100 shadow-card">
               <h3 class="text-lg font-bold text-ink-900 mb-2.5">{{ area.title }}</h3>
@@ -134,10 +134,6 @@ export const routeMeta: RouteMeta = {
             </div>
           }
         </div>
-        <p class="border-l-2 border-accent-500 pl-6 py-1 text-ink-700 leading-relaxed max-w-3xl">
-          <span class="font-semibold text-ink-900">Example:</span>
-          {{ exampleResult }}
-        </p>
       </div>
     </section>
 
@@ -223,9 +219,6 @@ export const routeMeta: RouteMeta = {
   `,
 })
 export default class HomePageComponent {
-  years = placeholders.years;
-  exampleResult = placeholders.exampleResult;
-
   symptoms = [
     {
       title: 'Counts drift between systems',
@@ -266,12 +259,12 @@ export default class HomePageComponent {
       stage: 'Step one',
       title: 'Inventory Data Health Check',
       description:
-        'One week, fixed fee. It ends in a written plan you own, whether or not you hire me to carry it out.',
+        'A short, self-contained assessment. It ends in a written plan you own, whether or not you hire me to carry it out.',
       points: [
         'Where counts drift, and why, system by system',
         'Every place data gets re-keyed by hand',
         "The legacy tool's risks, ranked by business exposure",
-        'A fixed quote to retire it, if that is the right call',
+        'A plan to retire it, if that is the right call',
       ],
       linkLabel: 'What the health check covers',
     },
@@ -279,12 +272,12 @@ export default class HomePageComponent {
       id: 'migration',
       stage: 'The main offer',
       title: 'Retire One Legacy Inventory Tool',
-      description: `${placeholders.retireWeeks} weeks at a fixed price. The new system runs side by side with the old one until an agreed switch-off date.`,
+      description: 'One aging tool, replaced. The new system runs side by side with the old one until an agreed switch-off date.',
       points: [
-        'A one-week assessment to lock the scope',
+        'An assessment first, to lock the scope',
         'Build and migrate side by side, with no freeze',
         'Switch-off on a date agreed up front',
-        'Often small enough to approve without a procurement cycle',
+        'Documentation and handover for your team',
       ],
       linkLabel: 'How a retirement runs',
     },
@@ -292,7 +285,7 @@ export default class HomePageComponent {
       id: 'fractional',
       stage: 'For integrators',
       title: 'Embedded for Integrators',
-      description: `Senior .NET and Angular depth on your team's project, remote from Arizona, ${placeholders.embeddedHours} hours a week.`,
+      description: "Senior .NET and Angular depth on your team's project, remote from Arizona.",
       points: [
         'C#, ASP.NET Core and EF Core',
         'Angular front ends that crews actually use',
@@ -310,7 +303,7 @@ export default class HomePageComponent {
     },
     {
       title: 'There is a finish line',
-      body: 'The health check and the retirement work come with a fixed price, a fixed scope and a switch-off date, agreed before the work starts. You know what done looks like, and when.',
+      body: 'The scope and a switch-off date are agreed before the work starts. You know what done looks like, and when.',
     },
     {
       title: 'Your team ends up owning it',

@@ -4,7 +4,7 @@ import type { RouteMeta } from '@analogjs/router';
 import { SocialLinksComponent } from '../components/social-links/social-links.component';
 import { CtaComponent } from '../components/cta/cta.component';
 import { pageMeta, pageTitle } from '../seo';
-import { placeholders, site } from '../site.config';
+import { site } from '../site.config';
 
 const description =
   'Matt Verry is an independent senior developer and architect, and Lyra is his practice. He builds and replaces inventory and construction build-out systems for large operations.';
@@ -49,7 +49,7 @@ export const routeMeta: RouteMeta = {
 
           <div class="space-y-6 text-lg text-ink-600 leading-relaxed">
             <p>
-              I'm an independent senior developer and architect with {{ years }} years
+              I'm an independent senior developer and architect working
               in .NET and Angular. Most of that work has been large-scale inventory
               management and construction build-out for large enterprises: the systems
               that track what is in stock, where it is, and what has been installed on
@@ -64,8 +64,7 @@ export const routeMeta: RouteMeta = {
             </p>
             <p>
               Lyra is how I work with clients directly. I fix and replace the inventory
-              and build-out systems large operations depend on, usually at a fixed price
-              with a clear finish line.
+              and build-out systems large operations depend on.
             </p>
           </div>
 
@@ -145,7 +144,6 @@ export const routeMeta: RouteMeta = {
 })
 export default class AboutPageComponent {
   legalName = site.legalName;
-  years = placeholders.years;
 
   reasons = [
     {

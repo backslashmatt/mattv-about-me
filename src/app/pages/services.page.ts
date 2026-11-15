@@ -3,10 +3,10 @@ import { RouterLink } from '@angular/router';
 import type { RouteMeta } from '@analogjs/router';
 import { CtaComponent } from '../components/cta/cta.component';
 import { pageMeta, pageTitle } from '../seo';
-import { placeholders, site } from '../site.config';
+import { site } from '../site.config';
 
 const description =
-  'Three ways to work with Lyra on inventory and construction build-out systems: a fixed-fee inventory data health check, retiring one legacy inventory tool at a fixed price, and senior .NET and Angular help embedded with integrators.';
+  'Three ways to work with Lyra on inventory and construction build-out systems: an inventory data health check, retiring one legacy inventory tool, and senior .NET and Angular help embedded with integrators.';
 
 export const routeMeta: RouteMeta = {
   title: pageTitle('Services'),
@@ -25,12 +25,12 @@ export const routeMeta: RouteMeta = {
       <div class="max-w-4xl mx-auto px-6 py-20 md:py-28">
         <p class="text-accent-300 font-medium mb-5 text-sm tracking-wide uppercase">Services</p>
         <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
-          Two fixed-price offers, and help for integrators
+          Three ways to work together
         </h1>
         <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-2xl">
-          You should not have to sign a six-figure delivery contract to find out whether
-          an aging inventory tool can be retired. So the work comes in stages, and the
-          first one is small on purpose.
+          You should not have to commit to a full rewrite to find out whether an aging
+          inventory tool can be retired. So the work comes in stages, and the first one
+          is small on purpose.
         </p>
       </div>
     </section>
@@ -160,17 +160,17 @@ export default class ServicesPageComponent {
     {
       id: 'assessment',
       stage: 'Step one',
-      shape: `One week · fixed fee: ${placeholders.assessmentPrice}`,
+      shape: 'A short, self-contained assessment',
       title: 'Inventory Data Health Check',
       summary:
-        'Before anyone commits budget to replacing a system, it is worth knowing what the replacement actually involves. The health check is a one-week, self-contained assessment that ends in a written plan, and the plan is yours whatever you do next.',
+        'Before anyone commits budget to replacing a system, it is worth knowing what the replacement actually involves. The health check is a short, self-contained assessment that ends in a written plan, and the plan is yours whatever you do next.',
       deliverablesLabel: 'What you get',
       deliverables: [
         'A map of every system that holds inventory or build-out data, and how they talk to each other',
         'Where counts drift between systems, and the cause of each gap',
         'Every place data gets re-keyed by hand, with the hours it costs',
         "The legacy tool's risks, ranked by business exposure rather than a raw vulnerability list",
-        'A fixed quote and switch-off date for retiring it, if that is the right call',
+        'A plan and a switch-off date for retiring it, if that is the right call',
         'A walkthrough with your team and whoever holds the budget',
       ],
       fitFor: [
@@ -180,18 +180,18 @@ export default class ServicesPageComponent {
         'An audit, an ERP upgrade or a new site is forcing the question',
       ],
       howItStarts:
-        'A 20-minute call about what you run and what is forcing the change. If it looks like a fit, I send a scope and the fixed fee in writing before any money changes hands.',
+        'A call about what you run and what is forcing the change. If it looks like a fit, I send a written scope before anything is agreed.',
     },
     {
       id: 'migration',
       stage: 'The main offer',
-      shape: `${placeholders.retireWeeks} weeks · fixed price: ${placeholders.retirePrice}`,
+      shape: 'Replaced side by side, then switched off',
       title: 'Retire One Legacy Inventory Tool',
       summary:
-        'One aging tool, replaced and switched off. The new system runs side by side with the old one until an agreed date, so the operation never stops. A fixed price is often small enough to approve without a procurement cycle.',
+        'One aging tool, replaced and switched off. The new system runs side by side with the old one until an agreed date, so the operation never stops.',
       deliverablesLabel: 'How it runs',
       deliverables: [
-        'A one-week assessment that locks the scope, the price and the switch-off date',
+        'An assessment that locks the scope and the switch-off date',
         'The replacement built on modern .NET and Angular, in your cloud and your repository',
         'Data migrated and reconciled against the old tool, so the counts agree before anyone switches',
         'Both systems side by side, with crews moving over in stages rather than all at once',
@@ -200,17 +200,17 @@ export default class ServicesPageComponent {
       ],
       fitFor: [
         'One tool sits at the centre of the operation and cannot go dark for a rewrite',
-        'You want a fixed price and a finish date, not an open-ended project',
+        'You want a clear finish line, not an open-ended project',
         'The front end and the back end both need to move',
         'You want your team to come out of it able to run what they are handed',
       ],
       howItStarts:
-        'Usually straight out of a health check, because by then the scope is known and priced. If you already have a plan you trust, I am happy to work to yours instead.',
+        'Usually straight out of a health check, because by then the scope is known. If you already have a plan you trust, I am happy to work to yours instead.',
     },
     {
       id: 'fractional',
       stage: 'For integrators',
-      shape: `Remote from Arizona · ${placeholders.embeddedHours} hours a week · ${placeholders.embeddedRate}`,
+      shape: 'Remote from Arizona',
       title: 'Embedded for Integrators',
       summary:
         "Senior .NET and Angular depth on your team's project, for integrators and consultancies delivering inventory, ERP or field systems who need someone who has built these before.",
@@ -229,7 +229,7 @@ export default class ServicesPageComponent {
         'You want a known quantity without a permanent headcount',
       ],
       howItStarts:
-        'A call about the project, what your team has and what it is missing. Arrangements are month to month, so if it stops being worth it, it is easy to stop.',
+        'A call about the project, what your team has and what it is missing.',
     },
   ];
 

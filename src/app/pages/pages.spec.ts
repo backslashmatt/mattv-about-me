@@ -107,7 +107,7 @@ describe('Contact page', () => {
   });
 
   it('should carry its own meta description', () => {
-    expect(descriptionOf(contactMeta)).toContain('20-minute call');
+    expect(descriptionOf(contactMeta)).toContain('Book a call');
   });
 });
 

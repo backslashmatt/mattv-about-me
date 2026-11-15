@@ -24,25 +24,6 @@ export const site = {
 export const tagline =
   'I fix and replace the inventory and construction build-out systems large operations depend on.';
 
-/**
- * TODO(matt): facts only you can give. Each value below renders on the site
- * exactly as written, so the bracketed text stays visible in previews until it
- * is replaced. Search the repo for `placeholders.` to see every use.
- */
-export const placeholders = {
-  /** Years designing and building these systems, e.g. "15". */
-  years: '[YEARS]',
-  /** One result you can name, with the client anonymised if needed. */
-  exampleResult:
-    '[EXAMPLE RESULT: one system replaced, hours saved or sites rolled out]',
-  /** Length of the "Retire one legacy inventory tool" engagement. */
-  retireWeeks: '[WEEKS]',
-  assessmentPrice: '[ASSESSMENT PRICE]',
-  retirePrice: '[RETIREMENT PRICE]',
-  embeddedRate: '[DAY RATE OR MONTHLY RETAINER]',
-  /** Hours a week available to an integrator's team. */
-  embeddedHours: '[HOURS]',
-} as const;
 
 export const absoluteUrl = (path: string): string =>
   `${site.url}${path.startsWith('/') ? path : `/${path}`}`;
