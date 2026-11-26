@@ -4,6 +4,7 @@ import type { RouteMeta } from '@analogjs/router';
 import { SocialLinksComponent } from '../components/social-links/social-links.component';
 import { pageMeta, pageTitle } from '../seo';
 import { site } from '../site.config';
+import { contactEmail } from '../contact-details';
 
 const description =
   'Get in touch with Lyra about pitch-n, rep-n or quest-n, or about an inventory or build-out system you want fixed or replaced.';
@@ -69,7 +70,8 @@ export const routeMeta: RouteMeta = {
             What happens next
           </h2>
           <p class="text-ink-600 leading-relaxed mb-7">
-            The path from an email to a signed scope is short and has no surprises in it.
+            A question about an app just gets a reply. For a system, the path from an
+            email to a signed scope is short and has no surprises in it.
           </p>
           <ol class="space-y-6">
             @for (step of steps; track step.title; let i = $index) {
@@ -111,14 +113,14 @@ export const routeMeta: RouteMeta = {
   `,
 })
 export default class ContactPageComponent {
-  email = site.email;
+  email = contactEmail;
 
   /**
    * Pre-filling the subject means the enquiry arrives already labelled, and it
    * nudges the sender toward the detail that makes a first reply useful.
    */
   mailto =
-    `mailto:${site.email}` +
+    `mailto:${contactEmail}` +
     `?subject=${encodeURIComponent('Lyra enquiry')}`;
 
   includeItems = [

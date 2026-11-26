@@ -42,6 +42,8 @@ proof would be worse than none.
 - **Point lyraapps.com at Firebase Hosting.** `site.url`, `SITE_URL` in
   `vite.config.ts` and the `Sitemap:` line in `public/robots.txt` already use
   `https://lyraapps.com`; the domain has to be connected to this Firebase site.
+- **Social links.** The links in `social-links` (shown on the contact page)
+  still point at existing personal accounts; drop any that are no longer used.
 
 ## Structure
 

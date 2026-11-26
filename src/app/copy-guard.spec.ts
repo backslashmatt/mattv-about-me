@@ -18,13 +18,14 @@ const sources = (dir: string): string[] =>
 // 2026). His name, email address and personal profiles appear on the contact
 // page only, and no other page speaks in the first person.
 const personal = /\bMatt\b|Verry|mattv|matthew\.verry|backslashmatt/i;
-const firstPerson = /\b(I|I'm|I've|I'll|I'd|me|my|mine|myself)\b/;
-// Contact names him; social-links only renders on contact; site.config holds
-// the email address the contact page shows.
+// `(?!-)` keeps Tailwind classes such as my-4 and me-2 from matching.
+const firstPerson = /\b(?:I|I'm|I've|I'll|I'd)\b|\b(?:[Mm]e|[Mm]y|[Mm]ine|[Mm]yself)\b(?!-)/;
+// Contact names him; social-links renders only on contact; contact-details
+// holds his email address and is imported only by those two (checked below).
 const contactOnly = [
   'pages/contact.page.ts',
   'components/social-links/social-links.component.ts',
-  'site.config.ts',
+  'contact-details.ts',
 ];
 const speaksAsMatt = ['pages/contact.page.ts'];
 
@@ -82,6 +83,40 @@ describe('site copy', () => {
         .map((line, i) => ({ line, i }))
         .filter(({ line }) => personal.test(line))
         .map(({ line, i }) => `${file.slice(root.length + 1)}:${i + 1}: ${line.trim()}`)
+    );
+    expect(hits).toEqual([]);
+  });
+
+  it('should keep his details and profiles inside the contact page', () => {
+    const root = join(process.cwd(), 'src/app');
+    const importers = lines(root)
+      .filter(({ line }) => /from '.*contact-details'/.test(line))
+      .map(({ rel }) => rel);
+    expect([...new Set(importers)].sort()).toEqual([
+      'components/social-links/social-links.component.ts',
+      'pages/contact.page.ts',
+    ]);
+
+    const socialHosts = lines(root)
+      .filter(({ line }) => line.includes('<app-social-links'))
+      .map(({ rel }) => rel);
+    expect([...new Set(socialHosts)]).toEqual(['pages/contact.page.ts']);
+  });
+
+  it('should keep his name out of the page shell and public files', () => {
+    const publicDir = join(process.cwd(), 'public');
+    const files = [
+      join(process.cwd(), 'index.html'),
+      ...readdirSync(publicDir)
+        .filter((name) => /\.(svg|txt|xml|json|webmanifest)$/.test(name))
+        .map((name) => join(publicDir, name)),
+    ];
+    const hits = files.flatMap((file) =>
+      readFileSync(file, 'utf8')
+        .split('\n')
+        .map((line, i) => ({ line, i }))
+        .filter(({ line }) => personal.test(line))
+        .map(({ line, i }) => `${file.slice(process.cwd().length + 1)}:${i + 1}: ${line.trim()}`)
     );
     expect(hits).toEqual([]);
   });

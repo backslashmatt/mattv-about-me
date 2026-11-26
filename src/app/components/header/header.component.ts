@@ -25,7 +25,7 @@ import { site } from '../../site.config';
             @for (link of navLinks; track link.path) {
               <li>
                 <a [routerLink]="link.path" [fragment]="link.fragment"
-                   routerLinkActive="text-accent-700"
+                   [routerLinkActive]="link.fragment ? [] : ['text-accent-700']"
                    [routerLinkActiveOptions]="{ exact: link.exact }"
                    class="text-ink-600 hover:text-accent-700 transition-colors font-medium text-[15px]">
                   {{ link.label }}
@@ -64,7 +64,7 @@ import { site } from '../../site.config';
             @for (link of navLinks; track link.path) {
               <li>
                 <a [routerLink]="link.path" [fragment]="link.fragment"
-                   routerLinkActive="text-accent-700"
+                   [routerLinkActive]="link.fragment ? [] : ['text-accent-700']"
                    [routerLinkActiveOptions]="{ exact: link.exact }"
                    (click)="mobileMenuOpen.set(false)"
                    class="block text-ink-600 hover:text-accent-700 transition-colors font-medium py-2">

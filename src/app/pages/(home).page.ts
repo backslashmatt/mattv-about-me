@@ -30,7 +30,7 @@ export const routeMeta: RouteMeta = {
           </p>
           <h1 class="text-4xl md:text-[3.4rem] font-bold tracking-tightest leading-[1.08] mb-7">
             Apps for making plans
-            <span class="text-accent-300">and keeping goals.</span>
+            <span class="text-accent-300">and sticking to goals.</span>
           </h1>
           <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-2xl mb-9">
             Lyra makes pitch-n, rep-n and quest-n. It also builds and replaces

@@ -5,9 +5,10 @@
  * Graph tags. It must match `SITE_URL` in `vite.config.ts` and the `Sitemap:`
  * line in `public/robots.txt`.
  *
- * The site is about Lyra's apps and services. Matt is named only on the contact
- * page (his call, Nov 2026), so his name, photo, email address and personal
- * profiles stay off every other page. `copy-guard.spec.ts` enforces this.
+ * The site is about Lyra's apps and services. Its owner is named only on the
+ * contact page (his call, Nov 2026), so his name, photo, email address and
+ * personal profiles stay off every other page; his details live in
+ * `contact-details.ts`. `copy-guard.spec.ts` enforces this.
  */
 export const site = {
   url: 'https://lyraapps.com',
@@ -16,8 +17,6 @@ export const site = {
   legalName: 'Lyra Software Applications LLC',
   /** Used as the default social share image. Must be an absolute path. */
   ogImage: '/assets/og-card.png',
-  /** Shown on the contact page only. */
-  email: 'matthew.verry@lyraapps.com',
 } as const;
 
 /** The one-line pitch, reused in meta tags and the footer. */
@@ -50,7 +49,7 @@ export const apps: LyraApp[] = [
     status: 'Live',
     url: 'https://pitch-n.net',
     summary: 'Turns "we should do something" into an actual plan.',
-    body: 'Friends or family pitch where to go, when, and what to do, vote them up, and the host locks in the winner.',
+    body: 'Friends or family pitch ideas (where, when, what), vote them up, and the host locks in the winner.',
     points: [
       'Pitch places, dates and activities, with costs attached',
       'Vote for every pitch you like and talk it through in comments',
@@ -60,7 +59,7 @@ export const apps: LyraApp[] = [
   {
     id: 'rep-n',
     name: 'rep-n',
-    status: 'In beta',
+    status: 'Coming soon',
     availability: 'Coming to rep-n.com.',
     summary: "A private workout logger that keeps working in the gym's dead zones.",
     body: 'Log strength and cardio set by set on your phone, and see what you did last time while you train.',
@@ -75,7 +74,7 @@ export const apps: LyraApp[] = [
     name: 'quest-n',
     status: 'In design',
     availability: 'Not available yet.',
-    summary: 'One game that the other Lyra apps feed.',
+    summary: "One game that Lyra's goal apps feed, starting with rep-n.",
     body: 'What you log elsewhere levels up a single hero, with weekly quests and bosses that only a consistent month can beat.',
     points: [
       'Rewards consistency and never punishes a missed week',

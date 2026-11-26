@@ -105,8 +105,7 @@ export const routeMeta: RouteMeta = {
           The ground Lyra covers
         </h2>
         <p class="text-ink-600 leading-relaxed mb-10 max-w-2xl">
-          Deliberately narrow. It is the same stack Lyra's own apps are built on, which
-          is why you get a straight answer about it.
+          Deliberately narrow: it is the stack Lyra's own apps run on, every day.
         </p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           @for (group of stack; track group.area) {

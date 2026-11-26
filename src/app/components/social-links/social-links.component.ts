@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core';
-import { site } from '../../site.config';
+import { contactEmail } from '../../contact-details';
 
 @Component({
   selector: 'app-social-links',
@@ -58,6 +58,6 @@ export class SocialLinksComponent {
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mattvdev/', icon: 'linkedin' },
     { name: 'Twitter', url: 'https://twitter.com/mattv_dev', icon: 'twitter' },
     { name: 'Mastodon', url: 'https://mstdn.social/@mattv', icon: 'mastodon' },
-    { name: 'Email', url: site.email, icon: 'email', type: 'email' },
+    { name: 'Email', url: contactEmail, icon: 'email', type: 'email' },
   ];
 }
