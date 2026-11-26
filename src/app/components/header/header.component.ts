@@ -1,56 +1,39 @@
-import { Component, DOCUMENT, inject, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { site } from '../../site.config';
 
 @Component({
   selector: 'app-header',
   imports: [RouterLink, RouterLinkActive],
   template: `
-    <a href="#main"
-       (click)="skipToMain($event)"
-       class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:bg-ink-900 focus:text-white focus:rounded-lg">
-      Skip to content
-    </a>
-
-    <header class="bg-white/85 backdrop-blur-md border-b border-ink-100 sticky top-0 z-50">
-      <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-6"
-           aria-label="Primary">
-        <a routerLink="/" class="font-display text-3xl text-ink-900 hover:text-accent-700 transition-colors leading-none">
-          {{ brand }}
+    <header class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+      <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a routerLink="/" class="font-display text-3xl text-gray-900 hover:text-teal-600 transition-colors">
+          matt v
         </a>
 
         <!-- Desktop nav -->
-        <div class="hidden md:flex items-center gap-8">
-          <ul class="flex items-center gap-8">
-            @for (link of navLinks; track link.path) {
-              <li>
-                <a [routerLink]="link.path" [fragment]="link.fragment"
-                   [routerLinkActive]="link.fragment ? [] : ['text-accent-700']"
-                   [routerLinkActiveOptions]="{ exact: link.exact }"
-                   class="text-ink-600 hover:text-accent-700 transition-colors font-medium text-[15px]">
-                  {{ link.label }}
-                </a>
-              </li>
-            }
-          </ul>
-          <a routerLink="/contact"
-             class="px-4 py-2 bg-ink-900 text-white rounded-lg font-medium text-[15px] hover:bg-accent-700 transition-colors">
-            Get in touch
-          </a>
-        </div>
+        <ul class="hidden md:flex items-center gap-8">
+          @for (link of navLinks; track link.path) {
+            <li>
+              <a [routerLink]="link.path"
+                 routerLinkActive="text-teal-600"
+                 [routerLinkActiveOptions]="{ exact: link.exact }"
+                 class="text-gray-600 hover:text-teal-600 transition-colors font-medium">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
 
         <!-- Mobile hamburger -->
-        <button class="md:hidden p-2 -mr-2 text-ink-600 hover:text-accent-700 transition-colors"
-                [attr.aria-expanded]="mobileMenuOpen()"
-                aria-controls="mobile-menu"
-                [attr.aria-label]="mobileMenuOpen() ? 'Close menu' : 'Open menu'"
+        <button class="md:hidden p-2 text-gray-600 hover:text-teal-600 transition-colors"
                 (click)="mobileMenuOpen.set(!mobileMenuOpen())">
           @if (mobileMenuOpen()) {
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
           } @else {
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
           }
@@ -59,26 +42,19 @@ import { site } from '../../site.config';
 
       <!-- Mobile menu -->
       @if (mobileMenuOpen()) {
-        <div id="mobile-menu" class="md:hidden border-t border-ink-100 bg-white">
-          <ul class="px-6 py-4 space-y-1">
+        <div class="md:hidden border-t border-gray-100 bg-white">
+          <ul class="px-6 py-4 space-y-3">
             @for (link of navLinks; track link.path) {
               <li>
-                <a [routerLink]="link.path" [fragment]="link.fragment"
-                   [routerLinkActive]="link.fragment ? [] : ['text-accent-700']"
+                <a [routerLink]="link.path"
+                   routerLinkActive="text-teal-600"
                    [routerLinkActiveOptions]="{ exact: link.exact }"
                    (click)="mobileMenuOpen.set(false)"
-                   class="block text-ink-600 hover:text-accent-700 transition-colors font-medium py-2">
+                   class="block text-gray-600 hover:text-teal-600 transition-colors font-medium py-1">
                   {{ link.label }}
                 </a>
               </li>
             }
-            <li class="pt-2">
-              <a routerLink="/contact"
-                 (click)="mobileMenuOpen.set(false)"
-                 class="block text-center px-4 py-2.5 bg-ink-900 text-white rounded-lg font-medium">
-                Get in touch
-              </a>
-            </li>
           </ul>
         </div>
       }
@@ -87,23 +63,9 @@ import { site } from '../../site.config';
 })
 export class HeaderComponent {
   mobileMenuOpen = signal(false);
-  readonly #document = inject(DOCUMENT);
 
-  /**
-   * With <base href="/">, a bare #main link resolves to /#main and would
-   * navigate home from any other page, so move focus to the content instead.
-   */
-  skipToMain(event: Event): void {
-    event.preventDefault();
-    const main = this.#document.getElementById('main');
-    main?.focus();
-    main?.scrollIntoView();
-  }
-  brand = site.name;
-
-  navLinks: { path: string; label: string; exact: boolean; fragment?: string }[] = [
-    { path: '/', fragment: 'apps', label: 'Apps', exact: true },
-    { path: '/services', label: 'Services', exact: false },
-    { path: '/blog', label: 'Writing', exact: false },
+  navLinks = [
+    { path: '/about', label: 'About', exact: true },
+    { path: '/blog', label: 'Blog', exact: false },
   ];
 }

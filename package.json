@@ -10,7 +10,6 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "postbuild": "node scripts/postbuild-404.mjs",
     "preview": "vite preview",
     "test": "vitest"
   },
