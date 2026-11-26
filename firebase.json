@@ -49,6 +49,13 @@
           }
         ]
       }
+    ],
+    "redirects": [
+      {
+        "source": "/about",
+        "destination": "/",
+        "type": 301
+      }
     ]
   }
 }

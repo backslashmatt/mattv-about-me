@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SocialLinksComponent } from '../social-links/social-links.component';
 import { site, tagline } from '../../site.config';
 
 @Component({
   selector: 'app-footer',
-  imports: [SocialLinksComponent, RouterLink],
+  imports: [RouterLink],
   template: `
     <footer class="bg-ink-950 text-ink-300 border-t border-white/5">
       <div class="max-w-6xl mx-auto px-6 py-14">
@@ -14,7 +13,7 @@ import { site, tagline } from '../../site.config';
           <div class="md:col-span-1">
             <p class="font-display text-3xl text-white mb-3">{{ brand }}</p>
             <p class="text-sm leading-relaxed text-ink-400 max-w-xs">
-              Matt Verry's independent practice in Arizona. {{ blurb }}
+              {{ blurb }}
             </p>
           </div>
 
@@ -25,7 +24,7 @@ import { site, tagline } from '../../site.config';
               <ul class="space-y-2.5 text-sm">
                 @for (link of siteLinks; track link.path) {
                   <li>
-                    <a [routerLink]="link.path" class="hover:text-accent-300 transition-colors">
+                    <a [routerLink]="link.path" [fragment]="link.fragment" class="hover:text-accent-300 transition-colors">
                       {{ link.label }}
                     </a>
                   </li>
@@ -35,15 +34,12 @@ import { site, tagline } from '../../site.config';
             <div>
               <h2 class="text-white font-semibold text-sm uppercase tracking-wide mb-4">Start a conversation</h2>
               <p class="text-sm mb-4 leading-relaxed">
-                Tell me what you're running and what's forcing the change.
+                A question about the apps, or a system that needs work.
               </p>
-              <a [href]="'mailto:' + email"
-                 class="text-accent-300 hover:text-accent-200 transition-colors text-sm font-medium break-all">
-                {{ email }}
+              <a routerLink="/contact"
+                 class="text-accent-300 hover:text-accent-200 transition-colors text-sm font-medium">
+                Get in touch
               </a>
-              <div class="mt-6 flex">
-                <app-social-links tone="dark" align="start" />
-              </div>
             </div>
           </div>
         </div>
@@ -55,8 +51,6 @@ import { site, tagline } from '../../site.config';
             <a href="https://analogjs.org" target="_blank" rel="noopener"
                class="text-ink-300 hover:text-accent-300 underline underline-offset-2">Analog</a>
             &amp; Angular.
-            <a href="https://github.com/backslashmatt/mattv-about-me/" target="_blank" rel="noopener"
-               class="text-ink-300 hover:text-accent-300 underline underline-offset-2">View source</a>.
           </p>
         </div>
       </div>
@@ -65,14 +59,13 @@ import { site, tagline } from '../../site.config';
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();
-  email = site.email;
   brand = site.name;
   legalName = site.legalName;
   blurb = tagline;
 
-  siteLinks = [
+  siteLinks: { path: string; label: string; fragment?: string }[] = [
+    { path: '/', fragment: 'apps', label: 'Apps' },
     { path: '/services', label: 'Services' },
-    { path: '/about', label: 'About' },
     { path: '/blog', label: 'Writing' },
     { path: '/contact', label: 'Contact' },
   ];

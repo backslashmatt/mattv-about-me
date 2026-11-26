@@ -32,9 +32,9 @@ export const routeMeta: RouteMeta = {
            class="px-6 py-3 bg-ink-900 text-white rounded-lg font-medium hover:bg-accent-700 transition-colors">
           Back to the homepage
         </a>
-        <a routerLink="/services"
+        <a routerLink="/" fragment="apps"
            class="px-6 py-3 bg-white text-ink-700 rounded-lg font-medium hover:bg-ink-50 transition-colors border border-ink-200">
-          See what I do
+          See the apps
         </a>
       </div>
     </div>

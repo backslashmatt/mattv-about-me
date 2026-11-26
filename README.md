@@ -1,24 +1,29 @@
 # Lyra - lyraapps.com
 
-The site for Lyra (Lyra Software Applications LLC), Matt Verry's independent
-practice in Arizona: fixing and replacing the inventory and construction
-build-out systems large operations depend on. Built with
+The site for Lyra (Lyra Software Applications LLC): its public apps, pitch-n,
+rep-n and quest-n, and its .NET and Angular services for companies. Built with
 [Analog](https://analogjs.org/), [Angular](https://angular.dev/) v22, and
 [Tailwind CSS](https://tailwindcss.com/), prerendered to static HTML and
 deployed on [Firebase Hosting](https://firebase.google.com/docs/hosting).
 
 Inspired and based on [Nelson's blog](https://github.com/nelsongutidev).
 
-## Who the site is for
+## What the site is about
 
-Every page is aimed at one reader: someone responsible for the inventory or
-build-out system a large operation runs on, where counts drift between systems,
-crews re-key the same data, and the one tool everyone depends on is the one
-nobody wants to touch. The second reader is an integrator who needs senior
-.NET and Angular help on that kind of project.
+The site is about Lyra, not about Matt (his call, Nov 2026). It leads with the
+apps, then the services, and names Matt only on the contact page. His name,
+photo, email address and personal profiles stay off every other page, and no
+other page speaks in the first person. `src/app/copy-guard.spec.ts` fails the
+build if that slips.
 
-The site leads with the domain, not the stack, and funnels the reader toward a
-call through three offers:
+**The apps** live in `apps` in `src/app/site.config.ts`. Each one has a status
+badge, and only an app with a `url` gets a link out. Describe what an app does
+today, from its own copy or design docs in the lyra repo, rather than features
+it does not have yet. When rep-n or quest-n goes live, give it a `url` and a new
+status.
+
+**The services** are three offers for teams with a business-critical inventory
+or construction build-out system:
 
 1. **Inventory Data Health Check** (`/services#assessment`): a short assessment
    that ends in a written plan
@@ -27,36 +32,32 @@ call through three offers:
 3. **Embedded for Integrators** (`/services#fractional`): senior .NET and
    Angular depth on an integrator's team
 
-Keep that reader in mind when changing copy. Anything that reads as a résumé
-rather than an offer is off-target.
+The site describes what Lyra does and leaves rates, prices, engagement lengths
+and hours to a conversation (Matt's call, Nov 2026). Keep them off the pages.
+Worth adding when you have them: named client work and testimonials. Invented
+proof would be worse than none.
 
 ### Before this goes live
 
 - **Point lyraapps.com at Firebase Hosting.** `site.url`, `SITE_URL` in
   `vite.config.ts` and the `Sitemap:` line in `public/robots.txt` already use
   `https://lyraapps.com`; the domain has to be connected to this Firebase site.
-- **Social links.** `twitterHandle` in `site.config.ts` and the links in
-  `social-links` still point at existing personal accounts; drop any that are
-  no longer used.
-
-The site describes what Lyra does and leaves rates, prices, engagement lengths
-and hours to a conversation (Matt's call, Nov 2026). Keep them off the pages.
-Worth adding when you have them: named client work and testimonials. Invented
-proof would be worse than none.
 
 ## Structure
 
 | Route | File | Purpose |
 | --- | --- | --- |
-| `/` | `src/app/pages/(home).page.ts` | Positioning, symptoms, service ladder, principles |
+| `/` | `src/app/pages/(home).page.ts` | The apps, then a summary of the services |
 | `/services` | `src/app/pages/services.page.ts` | The three engagements in detail |
-| `/about` | `src/app/pages/about.page.ts` | Credibility for a buyer evaluating a consultant |
-| `/contact` | `src/app/pages/contact.page.ts` | The conversion destination |
+| `/contact` | `src/app/pages/contact.page.ts` | How to get in touch; the only page that names Matt |
 | `/blog` | `src/app/pages/blog/index.page.ts` | Writing, as supporting authority |
 | `*` | `src/app/pages/[...not-found].page.ts` | 404, marked `noindex`; also built as `404.html` |
 
-Shared pieces live in `src/app/components/`: `header`, `footer`, `social-links`,
-and `cta` (the closing call-to-action band reused across marketing pages).
+Shared pieces live in `src/app/components/`: `header`, `footer`, `social-links`
+(Matt's profiles, shown on the contact page only), and `cta` (the closing
+call-to-action band reused across pages). The old `/about` page is gone;
+`firebase.json` redirects it to the home page. The default share image is
+`public/assets/og-card.png`.
 
 ## Requirements
 
@@ -113,9 +114,11 @@ npm test
 Vitest runs the specs in `src/**/*.spec.ts` in a jsdom environment, using
 `vitest.config.ts` (separate from the app's `vite.config.ts`).
 
-The page specs in `src/app/pages/pages.spec.ts` assert on positioning copy and
-the presence of the contact route on purpose — they are there to catch a
-well-meaning edit that quietly turns the site back into a résumé.
+The page specs in `src/app/pages/pages.spec.ts` assert on the apps-first shape
+and the presence of the contact route on purpose, and `copy-guard.spec.ts`
+keeps rates, time commitments, Matt's name and first-person copy off the pages
+other than contact. They are there to catch a well-meaning edit that quietly
+turns the site back into a résumé.
 
 ## Blog
 

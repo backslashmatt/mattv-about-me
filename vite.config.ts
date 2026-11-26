@@ -27,7 +27,6 @@ export default defineConfig({
         routes: [
           '/',
           '/services',
-          '/about',
           '/contact',
           '/blog',
           // Matches the catch-all not-found page. Its HTML becomes 404.html (see

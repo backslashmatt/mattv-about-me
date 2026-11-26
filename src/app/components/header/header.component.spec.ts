@@ -36,7 +36,7 @@ describe('HeaderComponent', () => {
   it('should offer the contact call to action in the desktop nav', () => {
     const cta = Array.from(html().querySelectorAll('a[href="/contact"]'));
     expect(cta.length).toBeGreaterThan(0);
-    expect(cta[0].textContent?.trim()).toBe('Book a call');
+    expect(cta[0].textContent?.trim()).toBe('Get in touch');
   });
 
   it('should start with the mobile menu closed', () => {

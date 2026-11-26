@@ -4,14 +4,14 @@ import type { Type } from '@angular/core';
 
 import HomePageComponent, { routeMeta as homeMeta } from './(home).page';
 import ServicesPageComponent, { routeMeta as servicesMeta } from './services.page';
-import AboutPageComponent, { routeMeta as aboutMeta } from './about.page';
 import ContactPageComponent, { routeMeta as contactMeta } from './contact.page';
 import NotFoundPageComponent, { routeMeta as notFoundMeta } from './[...not-found].page';
+import { apps } from '../site.config';
 
 /**
- * These pages exist to convert a visitor, so the things worth protecting are the
- * ones that do the converting: the positioning, the route metadata that decides
- * how a shared link looks, and the presence of a route to /contact.
+ * The site leads with Lyra's apps, then its services, and names Matt only on
+ * the contact page. These specs protect that shape, the route metadata that
+ * decides how a shared link looks, and the route to /contact.
  */
 const render = <T>(component: Type<T>) => {
   TestBed.configureTestingModule({
@@ -31,31 +31,50 @@ const descriptionOf = (meta: typeof homeMeta) =>
 afterEach(() => TestBed.resetTestingModule());
 
 describe('Home page', () => {
-  it('should lead with the domain rather than a job title', () => {
+  it('should lead with the apps rather than a person', () => {
     const heading = render(HomePageComponent).querySelector('h1')?.textContent ?? '';
-    expect(heading).toContain('Inventory and build-out software');
+    expect(heading).toContain('Apps for making plans');
+  });
+
+  it('should give every app its own card and anchor', () => {
+    const html = render(HomePageComponent);
+    for (const app of apps) {
+      expect(html.querySelector(`#${app.id} h3`)?.textContent).toContain(app.name);
+    }
+  });
+
+  it('should link out only to apps that are live', () => {
+    const html = render(HomePageComponent);
+    for (const app of apps) {
+      const link = html.querySelector(`#${app.id} a[href^="https://"]`);
+      if (app.url) {
+        expect(link?.getAttribute('href')).toBe(app.url);
+      } else {
+        expect(link).toBeNull();
+      }
+    }
+  });
+
+  it('should name the three services and link each to its section', () => {
+    const html = render(HomePageComponent);
+    const text = html.textContent ?? '';
+    expect(text).toContain('Inventory Data Health Check');
+    expect(text).toContain('Retire One Legacy Inventory Tool');
+    expect(text).toContain('Embedded for Integrators');
+    for (const id of ['assessment', 'migration', 'fractional']) {
+      expect(html.querySelector(`a[href="/services#${id}"]`)).not.toBeNull();
+    }
   });
 
   it('should route the visitor to contact', () => {
     expect(render(HomePageComponent).querySelector('a[href="/contact"]')).not.toBeNull();
   });
 
-  it('should name the three offers', () => {
-    const text = render(HomePageComponent).textContent ?? '';
-    expect(text).toContain('Inventory Data Health Check');
-    expect(text).toContain('Retire One Legacy Inventory Tool');
-    expect(text).toContain('Embedded for Integrators');
-  });
-
-  it('should link each offer to its section on the services page', () => {
-    const html = render(HomePageComponent);
-    for (const id of ['assessment', 'migration', 'fractional']) {
-      expect(html.querySelector(`a[href="/services#${id}"]`)).not.toBeNull();
+  it('should name the apps in its meta description', () => {
+    const description = descriptionOf(homeMeta);
+    for (const app of apps) {
+      expect(description).toContain(app.name);
     }
-  });
-
-  it('should describe the offer in its meta description', () => {
-    expect(descriptionOf(homeMeta)).toContain('inventory and construction build-out');
   });
 });
 
@@ -67,28 +86,20 @@ describe('Services page', () => {
     }
   });
 
-  it('should state what Matt does not take on, so the page qualifies as well as sells', () => {
+  it('should state what Lyra does not take on, so the page qualifies as well as sells', () => {
     expect(render(ServicesPageComponent).textContent).toContain(
-      'What I am not the right call for'
+      'When Lyra is not the right call'
     );
+  });
+
+  it('should point its closing action at the retirement offer', () => {
+    expect(
+      render(ServicesPageComponent).querySelector('app-cta a[href="/services#migration"]')
+    ).not.toBeNull();
   });
 
   it('should carry its own meta description', () => {
     expect(descriptionOf(servicesMeta)).toContain('health check');
-  });
-});
-
-describe('About page', () => {
-  it('should position Matt as independent rather than a job seeker', () => {
-    expect(render(AboutPageComponent).textContent).toContain('Independent senior developer');
-  });
-
-  it('should close with a call to action', () => {
-    expect(render(AboutPageComponent).querySelector('app-cta')).not.toBeNull();
-  });
-
-  it('should describe the consultancy in its meta description', () => {
-    expect(descriptionOf(aboutMeta)).toContain('Lyra is his practice');
   });
 });
 
@@ -99,7 +110,13 @@ describe('Contact page', () => {
       ?.getAttribute('href');
 
     expect(href).toContain('mailto:');
-    expect(href).toContain('subject=Inventory%20system%20enquiry');
+    expect(href).toContain('subject=Lyra%20enquiry');
+  });
+
+  it('should say who reads the email', () => {
+    expect(render(ContactPageComponent).querySelector('h1 + p')?.textContent).toContain(
+      'Matt Verry'
+    );
   });
 
   it('should set out what happens after the email', () => {
@@ -107,7 +124,7 @@ describe('Contact page', () => {
   });
 
   it('should carry its own meta description', () => {
-    expect(descriptionOf(contactMeta)).toContain('Book a call');
+    expect(descriptionOf(contactMeta)).toContain('pitch-n');
   });
 });
 
@@ -115,7 +132,7 @@ describe('Not found page', () => {
   it('should route a lost visitor back into the site', () => {
     const html = render(NotFoundPageComponent);
     expect(html.querySelector('a[href="/"]')).not.toBeNull();
-    expect(html.querySelector('a[href="/services"]')).not.toBeNull();
+    expect(html.querySelector('a[href="/#apps"]')).not.toBeNull();
   });
 
   it('should ask crawlers not to index it', () => {

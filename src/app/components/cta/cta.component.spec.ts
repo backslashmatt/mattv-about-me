@@ -19,16 +19,26 @@ describe('CtaComponent', () => {
 
   it('should point at contact as the primary action', () => {
     const primary = html().querySelector('a[href="/contact"]');
-    expect(primary?.textContent?.trim()).toBe('Book a call');
+    expect(primary?.textContent?.trim()).toBe('Get in touch');
   });
 
-  it('should offer the retirement offer on services as the secondary action', () => {
-    expect(html().querySelector('a[href="/services#migration"]')).not.toBeNull();
+  it('should offer the services page as the default secondary action', () => {
+    const secondary = html().querySelector('a[href="/services"]');
+    expect(secondary?.textContent?.trim()).toBe('See the services');
+  });
+
+  it('should let a page point the secondary action somewhere more specific', () => {
+    fixture.componentRef.setInput('secondaryLabel', 'See how a retirement works');
+    fixture.componentRef.setInput('secondaryFragment', 'migration');
+    fixture.detectChanges();
+
+    const secondary = html().querySelector('a[href="/services#migration"]');
+    expect(secondary?.textContent?.trim()).toBe('See how a retirement works');
   });
 
   it('should use the default copy when no inputs are supplied', () => {
     expect(html().querySelector('h2')?.textContent).toContain(
-      'Find out what retiring that tool actually involves.'
+      'A question about the apps, or a system that needs work?'
     );
   });
 

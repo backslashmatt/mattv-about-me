@@ -40,7 +40,6 @@ export function pageMeta({
     { property: 'og:url', content: url },
     { property: 'og:image', content: imageUrl },
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:site', content: site.twitterHandle },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
     { name: 'twitter:image', content: imageUrl },

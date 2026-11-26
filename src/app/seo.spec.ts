@@ -42,7 +42,7 @@ describe('pageMeta', () => {
   it('should default to a website card and allow articles to opt out', () => {
     expect(contentOf('property', 'og:type')).toBe('website');
 
-    const article = pageMeta({ title: 'T', description: 'D', path: '/about', type: 'article' });
+    const article = pageMeta({ title: 'T', description: 'D', path: '/blog/take-until-destroyed', type: 'article' });
     const type = article.find(
       (tag) => (tag as Record<string, string>)['property'] === 'og:type'
     );
@@ -51,6 +51,10 @@ describe('pageMeta', () => {
 
   it('should request a large summary card', () => {
     expect(contentOf('name', 'twitter:card')).toBe('summary_large_image');
+  });
+
+  it('should not tie every page to a personal social account', () => {
+    expect(contentOf('name', 'twitter:site')).toBeUndefined();
   });
 });
 

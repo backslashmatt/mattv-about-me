@@ -6,7 +6,7 @@ import { pageMeta, pageTitle } from '../seo';
 import { site } from '../site.config';
 
 const description =
-  'Book a call with Lyra about the inventory or build-out system you want fixed or replaced. What to include, what happens next, and how quickly you will hear back.';
+  'Get in touch with Lyra about pitch-n, rep-n or quest-n, or about an inventory or build-out system you want fixed or replaced.';
 
 export const routeMeta: RouteMeta = {
   title: pageTitle('Contact'),
@@ -24,12 +24,12 @@ export const routeMeta: RouteMeta = {
       <div class="max-w-4xl mx-auto px-6 py-20 md:py-28">
         <p class="text-accent-300 font-medium mb-5 text-sm tracking-wide uppercase">Contact</p>
         <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
-          Tell me what you're running
+          Get in touch
         </h1>
         <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-2xl mb-9">
-          No form, no funnel, no discovery questionnaire. One email to me, read by me,
-          and we set up a call. If I'm not the right person for the job,
-          you'll get a straight answer in the first reply.
+          Lyra is run by Matt Verry in Arizona, and every email goes straight to him.
+          No form, no funnel. Questions about the apps are welcome, and so is a system
+          that needs work.
         </p>
         <a [href]="mailto"
            class="inline-flex items-center gap-2.5 px-7 py-3.5 bg-accent-500 text-ink-950 rounded-lg font-semibold hover:bg-accent-400 transition-colors">
@@ -47,11 +47,11 @@ export const routeMeta: RouteMeta = {
         <!-- What to include -->
         <div>
           <h2 class="text-2xl font-bold text-ink-900 tracking-tight mb-4">
-            Worth putting in the first email
+            If it's about a system
           </h2>
           <p class="text-ink-600 leading-relaxed mb-7">
             None of it is required &mdash; a single paragraph is a perfectly good start.
-            But the more of this you include, the more useful my first reply will be.
+            But the more of this you include, the more useful the first reply will be.
           </p>
           <ul class="space-y-4">
             @for (item of includeItems; track item.label) {
@@ -99,11 +99,11 @@ export const routeMeta: RouteMeta = {
 
       <!-- Elsewhere -->
       <div class="mt-16 pt-12 border-t border-ink-100 text-center">
-        <h2 class="text-xl font-bold text-ink-900 mb-2">Elsewhere</h2>
+        <h2 class="text-xl font-bold text-ink-900 mb-2">Matt elsewhere</h2>
         <p class="text-ink-600 mb-6">
           Not ready to email? The
           <a routerLink="/blog" class="text-accent-700 font-medium hover:text-accent-800 underline underline-offset-2">writing</a>
-          is a decent way to work out whether we'd get on.
+          is a decent way to get a feel for the work.
         </p>
         <app-social-links />
       </div>
@@ -119,7 +119,7 @@ export default class ContactPageComponent {
    */
   mailto =
     `mailto:${site.email}` +
-    `?subject=${encodeURIComponent('Inventory system enquiry')}`;
+    `?subject=${encodeURIComponent('Lyra enquiry')}`;
 
   includeItems = [
     {
@@ -142,16 +142,16 @@ export default class ContactPageComponent {
 
   steps = [
     {
-      title: 'You email me',
-      detail: 'It comes straight to my inbox. Nothing is automated and no one else reads it.',
+      title: 'You email Matt',
+      detail: 'It goes straight to his inbox. Nothing is automated and no one else reads it.',
     },
     {
-      title: 'I reply, usually within two business days',
-      detail: 'Either with questions, or with the honest answer that this is not something I should take on.',
+      title: 'He replies, usually within two business days',
+      detail: 'Either with questions, or with the honest answer that this is not something Lyra should take on.',
     },
     {
       title: 'A call',
-      detail: 'No slides, no pitch deck. Mostly me asking about the system and how it got here.',
+      detail: 'No slides, no pitch deck. Mostly questions about the system and how it got here.',
     },
     {
       title: 'A written scope',
@@ -166,7 +166,7 @@ export default class ContactPageComponent {
     },
     {
       title: 'NDAs are fine',
-      body: 'If you need one in place before describing the system in any detail, send yours over and I will sign it.',
+      body: 'If you need one in place before describing the system in any detail, send yours over and Lyra will sign it.',
     },
     {
       title: 'Early questions are welcome',

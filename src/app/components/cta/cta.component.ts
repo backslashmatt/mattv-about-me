@@ -2,8 +2,8 @@ import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 /**
- * The closing call to action, reused at the foot of every marketing page so a
- * visitor never has to scroll back up to find the next step.
+ * The closing call to action, reused at the foot of every page so a visitor
+ * never has to scroll back up to find the next step.
  */
 @Component({
   selector: 'app-cta',
@@ -20,11 +20,11 @@ import { RouterLink } from '@angular/router';
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a routerLink="/contact"
              class="px-7 py-3.5 bg-accent-500 text-ink-950 rounded-lg font-semibold hover:bg-accent-400 transition-colors">
-            Book a call
+            Get in touch
           </a>
-          <a routerLink="/services" fragment="migration"
+          <a [routerLink]="secondaryLink()" [fragment]="secondaryFragment()"
              class="px-7 py-3.5 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/15">
-            See how a retirement works
+            {{ secondaryLabel() }}
           </a>
         </div>
       </div>
@@ -32,8 +32,11 @@ import { RouterLink } from '@angular/router';
   `,
 })
 export class CtaComponent {
-  heading = input('Find out what retiring that tool actually involves.');
+  heading = input('A question about the apps, or a system that needs work?');
   body = input(
-    'The health check ends in a written plan for what to do about it. There is no commitment to the build, and you keep the plan either way.'
+    'Either way, one email reaches a person, and you get a straight answer.'
   );
+  secondaryLabel = input('See the services');
+  secondaryLink = input('/services');
+  secondaryFragment = input<string | undefined>(undefined);
 }

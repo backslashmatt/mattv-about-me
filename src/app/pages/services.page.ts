@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import type { RouteMeta } from '@analogjs/router';
 import { CtaComponent } from '../components/cta/cta.component';
 import { pageMeta, pageTitle } from '../seo';
@@ -18,14 +17,14 @@ export const routeMeta: RouteMeta = {
 };
 
 @Component({
-  imports: [RouterLink, CtaComponent],
+  imports: [CtaComponent],
   template: `
     <!-- Page header -->
     <section class="bg-ink-950 text-white">
       <div class="max-w-4xl mx-auto px-6 py-20 md:py-28">
         <p class="text-accent-300 font-medium mb-5 text-sm tracking-wide uppercase">Services</p>
         <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
-          How I can help
+          How Lyra can help
         </h1>
         <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-2xl">
           You should not have to commit to a full rewrite to find out whether an aging
@@ -103,11 +102,11 @@ export const routeMeta: RouteMeta = {
     <section class="bg-ink-50 border-y border-ink-100">
       <div class="max-w-5xl mx-auto px-6 py-20">
         <h2 class="text-2xl md:text-3xl font-bold text-ink-900 tracking-tight mb-3">
-          The ground I cover
+          The ground Lyra covers
         </h2>
         <p class="text-ink-600 leading-relaxed mb-10 max-w-2xl">
-          Deliberately narrow. This is the stack I have spent my career in, which is why
-          I can give you a straight answer about it.
+          Deliberately narrow. It is the same stack Lyra's own apps are built on, which
+          is why you get a straight answer about it.
         </p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           @for (group of stack; track group.area) {
@@ -128,31 +127,29 @@ export const routeMeta: RouteMeta = {
     <section class="max-w-5xl mx-auto px-6 py-20">
       <div class="max-w-3xl">
         <h2 class="text-2xl md:text-3xl font-bold text-ink-900 tracking-tight mb-6">
-          What I am not the right call for
+          When Lyra is not the right call
         </h2>
         <div class="space-y-4 text-lg text-ink-600 leading-relaxed">
           <p>
-            Greenfield products on a stack I don't work in. Native mobile apps. Data
+            Greenfield products on a stack Lyra does not work in. Native mobile apps. Data
             science and ML platforms. Design-led marketing builds. Anything where you
             need a team of ten starting Monday.
           </p>
           <p>
-            If that's what you're after, say so in your first email and I'll tell you
-            straight away rather than after two calls. Where I can, I'll point you at
-            someone better suited.
+            If that's what you're after, say so in your first email and you'll hear so
+            straight away rather than after two calls, with a pointer to someone better
+            suited where there is one.
           </p>
         </div>
-        <a routerLink="/about"
-           class="inline-flex items-center mt-8 text-accent-700 font-semibold hover:text-accent-800 transition-colors group">
-          More about how I got here
-          <svg class="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-          </svg>
-        </a>
       </div>
     </section>
 
-    <app-cta />
+    <app-cta
+      heading="Find out what retiring that tool actually involves."
+      body="The health check ends in a written plan for what to do about it. There is no commitment to the build, and you keep the plan either way."
+      secondaryLabel="See how a retirement works"
+      secondaryLink="/services"
+      secondaryFragment="migration" />
   `,
 })
 export default class ServicesPageComponent {
@@ -180,7 +177,7 @@ export default class ServicesPageComponent {
         'An audit, an ERP upgrade or a new site is forcing the question',
       ],
       howItStarts:
-        'A call about what you run and what is forcing the change. If it looks like a fit, I send a written scope before anything is agreed.',
+        'A call about what you run and what is forcing the change. If it looks like a fit, Lyra sends a written scope before anything is agreed.',
     },
     {
       id: 'migration',
@@ -205,22 +202,22 @@ export default class ServicesPageComponent {
         'You want your team to come out of it able to run what they are handed',
       ],
       howItStarts:
-        'Usually straight out of a health check, because by then the scope is known. If you already have a plan you trust, I am happy to work to yours instead.',
+        'Usually straight out of a health check, because by then the scope is known. If you already have a plan you trust, Lyra can work to yours instead.',
     },
     {
       id: 'fractional',
       stage: 'For integrators',
-      shape: 'Remote from Arizona',
+      shape: 'Working remotely',
       title: 'Embedded for Integrators',
       summary:
         "Senior .NET and Angular depth on your team's project, for integrators and consultancies delivering inventory, ERP or field systems who need someone who has built these before.",
-      deliverablesLabel: 'What I bring',
+      deliverablesLabel: 'What Lyra brings',
       deliverables: [
         'C#, ASP.NET Core and EF Core on the back end',
         'Angular front ends that crews actually use in the field',
         'Integration between inventory, ERP and field systems',
         'Azure, PostgreSQL and CI/CD pipelines with tested rollbacks',
-        'Code review and documentation your team keeps using after I leave',
+        'Code review and documentation your team keeps using after the engagement ends',
       ],
       fitFor: [
         'You have won an inventory or build-out project and need senior hands on it',

@@ -24,7 +24,7 @@ import { site } from '../../site.config';
           <ul class="flex items-center gap-8">
             @for (link of navLinks; track link.path) {
               <li>
-                <a [routerLink]="link.path"
+                <a [routerLink]="link.path" [fragment]="link.fragment"
                    routerLinkActive="text-accent-700"
                    [routerLinkActiveOptions]="{ exact: link.exact }"
                    class="text-ink-600 hover:text-accent-700 transition-colors font-medium text-[15px]">
@@ -35,7 +35,7 @@ import { site } from '../../site.config';
           </ul>
           <a routerLink="/contact"
              class="px-4 py-2 bg-ink-900 text-white rounded-lg font-medium text-[15px] hover:bg-accent-700 transition-colors">
-            Book a call
+            Get in touch
           </a>
         </div>
 
@@ -63,7 +63,7 @@ import { site } from '../../site.config';
           <ul class="px-6 py-4 space-y-1">
             @for (link of navLinks; track link.path) {
               <li>
-                <a [routerLink]="link.path"
+                <a [routerLink]="link.path" [fragment]="link.fragment"
                    routerLinkActive="text-accent-700"
                    [routerLinkActiveOptions]="{ exact: link.exact }"
                    (click)="mobileMenuOpen.set(false)"
@@ -76,7 +76,7 @@ import { site } from '../../site.config';
               <a routerLink="/contact"
                  (click)="mobileMenuOpen.set(false)"
                  class="block text-center px-4 py-2.5 bg-ink-900 text-white rounded-lg font-medium">
-                Book a call
+                Get in touch
               </a>
             </li>
           </ul>
@@ -101,9 +101,9 @@ export class HeaderComponent {
   }
   brand = site.name;
 
-  navLinks = [
+  navLinks: { path: string; label: string; exact: boolean; fragment?: string }[] = [
+    { path: '/', fragment: 'apps', label: 'Apps', exact: true },
     { path: '/services', label: 'Services', exact: false },
-    { path: '/about', label: 'About', exact: true },
     { path: '/blog', label: 'Writing', exact: false },
   ];
 }

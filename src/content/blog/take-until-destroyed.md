@@ -23,7 +23,7 @@ meta:
   - name: twitter:description
     content: 'Unsubscribing from observables from components with takeUntilDestroyed.'
   - name: twitter:image
-    content: 'https://lyraapps.com/assets/MattV.jpg'
+    content: 'https://lyraapps.com/assets/og-card.png'
 ---
 
 # Take Until Destroyed
@@ -124,5 +124,3 @@ the right direction and for the love of all that's good I don't have to default 
 for any component.
 
 Thanks for reading and happy coding!
-
-Matt v

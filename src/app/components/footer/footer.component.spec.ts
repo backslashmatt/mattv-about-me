@@ -33,14 +33,13 @@ describe('FooterComponent', () => {
     ).map((a) => a.getAttribute('href'));
 
     for (const link of component.siteLinks) {
-      expect(hrefs).toContain(link.path);
+      expect(hrefs).toContain(link.fragment ? `${link.path}#${link.fragment}` : link.path);
     }
   });
 
-  it('should expose a mailto link so the footer is a conversion point', () => {
-    const mailto = (fixture.nativeElement as HTMLElement).querySelector(
-      'a[href^="mailto:"]'
-    );
-    expect(mailto?.getAttribute('href')).toBe(`mailto:${component.email}`);
+  it('should send visitors to the contact page rather than show an email address', () => {
+    const html = fixture.nativeElement as HTMLElement;
+    expect(html.querySelector('a[href^="mailto:"]')).toBeNull();
+    expect(html.querySelector('a[href="/contact"]')).not.toBeNull();
   });
 });
