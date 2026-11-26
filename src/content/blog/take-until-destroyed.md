@@ -7,6 +7,23 @@ tags:
     - Angular v16
 published: true
 slug: 'take-until-destroyed'
+# Analog applies these to the post's route. Without them a shared link shows
+# the home page's card (the index.html defaults).
+meta:
+  - name: description
+    content: 'Unsubscribing from observables from components with takeUntilDestroyed.'
+  - property: og:type
+    content: article
+  - property: og:title
+    content: 'Take Until Destroyed · Lyra'
+  - property: og:description
+    content: 'Unsubscribing from observables from components with takeUntilDestroyed.'
+  - name: twitter:title
+    content: 'Take Until Destroyed · Lyra'
+  - name: twitter:description
+    content: 'Unsubscribing from observables from components with takeUntilDestroyed.'
+  - name: twitter:image
+    content: 'https://lyraapps.com/assets/og-card.png'
 ---
 
 # Take Until Destroyed
@@ -107,5 +124,3 @@ the right direction and for the love of all that's good I don't have to default 
 for any component.
 
 Thanks for reading and happy coding!
-
-Matt v

@@ -1,76 +1,179 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import type { RouteMeta } from '@analogjs/router';
+import { CtaComponent } from '../components/cta/cta.component';
+import { pageMeta } from '../seo';
+import { apps, site, tagline } from '../site.config';
+
+const title = `${site.name} · pitch-n, rep-n and quest-n`;
+
+export const routeMeta: RouteMeta = {
+  title,
+  meta: pageMeta({
+    title,
+    description: tagline,
+    path: '/',
+  }),
+};
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, CtaComponent],
   template: `
-    <!-- Hero Section -->
-    <section class="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-teal-50">
-      <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-          <div class="flex-1 text-center md:text-left">
-            <p class="text-teal-600 font-medium mb-3 tracking-wide uppercase text-sm">Full Stack Developer</p>
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Hey, I'm<br/>
-              <span class="text-teal-600">Matt Verry</span>
-            </h1>
-            <p class="text-xl text-gray-600 mb-8 leading-relaxed max-w-lg">
-              Seasoned .NET &amp; Angular developer crafting robust web solutions,
-              scalable APIs, and elegant user experiences.
-            </p>
-            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-              <a routerLink="/about"
-                 class="px-6 py-3 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-700 transition-colors shadow-lg shadow-teal-600/25">
-                Learn More
-              </a>
-              <a routerLink="/blog"
-                 class="px-6 py-3 bg-white text-gray-700 rounded-lg font-medium hover:bg-gray-100 transition-colors border border-gray-200">
-                Read Blog
-              </a>
-            </div>
-          </div>
-          <div class="flex-shrink-0">
-            <img src="assets/MattV.jpg"
-                 alt="Matt Verry"
-                 width="320" height="376"
-                 class="rounded-2xl shadow-2xl shadow-gray-300/50 border-4 border-white"/>
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-ink-950 text-white">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(20,160,143,0.22),transparent_60%)]"></div>
+      <div class="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
+        <div class="max-w-3xl">
+          <p class="inline-flex items-center gap-2 text-accent-300 font-medium mb-6 text-sm tracking-wide">
+            <span class="w-8 h-px bg-accent-400"></span>
+            {{ legalName }}
+          </p>
+          <h1 class="text-4xl md:text-[3.4rem] font-bold tracking-tightest leading-[1.08] mb-7">
+            Apps for making plans
+            <span class="text-accent-300">and sticking to goals.</span>
+          </h1>
+          <p class="text-lg md:text-xl text-ink-300 leading-relaxed max-w-2xl mb-9">
+            Lyra makes pitch-n, rep-n and quest-n. It also builds and replaces
+            business-critical .NET and Angular systems for other companies.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a routerLink="/" fragment="apps"
+               class="px-7 py-3.5 bg-accent-500 text-ink-950 rounded-lg font-semibold hover:bg-accent-400 transition-colors">
+              See the apps
+            </a>
+            <a routerLink="/services"
+               class="px-7 py-3.5 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/15">
+              Services for companies
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills preview -->
-    <section class="max-w-5xl mx-auto px-6 py-20">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        @for (skill of skills; track skill.title) {
-          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div class="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center mb-4">
-              <span class="text-teal-600 text-lg">{{ skill.emoji }}</span>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ skill.title }}</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">{{ skill.description }}</p>
-          </div>
-        }
+    <!-- The apps -->
+    <section id="apps" class="scroll-mt-24 bg-ink-50 border-b border-ink-100">
+      <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+        <div class="max-w-2xl mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-ink-900 tracking-tight mb-5">
+            The apps
+          </h2>
+          <p class="text-lg text-ink-600 leading-relaxed">
+            Each one does a single job, and they share one Lyra sign-in.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          @for (app of apps; track app.id) {
+            <article [id]="app.id"
+                     class="scroll-mt-24 bg-white rounded-xl border border-ink-100 shadow-card p-7 flex flex-col">
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <h3 class="text-2xl font-bold text-ink-900">{{ app.name }}</h3>
+                <span class="px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wide border"
+                      [class]="app.url ? 'bg-accent-50 text-accent-800 border-accent-100' : 'bg-ink-50 text-ink-600 border-ink-200'">
+                  {{ app.status }}
+                </span>
+              </div>
+              <p class="text-ink-900 font-medium leading-relaxed mb-3">{{ app.summary }}</p>
+              <p class="text-ink-600 text-[15px] leading-relaxed mb-5">{{ app.body }}</p>
+              <ul class="space-y-2.5 mb-7 text-[15px]">
+                @for (point of app.points; track point) {
+                  <li class="flex gap-2.5 text-ink-700">
+                    <svg class="w-4 h-4 text-accent-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>{{ point }}</span>
+                  </li>
+                }
+              </ul>
+              @if (app.url) {
+                <a [href]="app.url" target="_blank" rel="noopener"
+                   class="mt-auto inline-flex items-center text-accent-700 font-semibold hover:text-accent-800 transition-colors text-[15px] group">
+                  Open {{ app.name }}
+                  <svg class="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              } @else {
+                <p class="mt-auto text-ink-500 text-[15px]">{{ app.availability }}</p>
+              }
+            </article>
+          }
+        </div>
       </div>
     </section>
+
+    <!-- Services -->
+    <section>
+      <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+        <div class="max-w-2xl mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-ink-900 tracking-tight mb-5">
+            Services for companies
+          </h2>
+          <p class="text-lg text-ink-600 leading-relaxed">
+            The same .NET and Angular stack the apps run on, applied to the inventory
+            and construction build-out systems large operations depend on. The health
+            check is the place to start.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          @for (service of services; track service.title; let i = $index) {
+            <div class="bg-white rounded-xl border border-ink-100 shadow-card p-7 flex flex-col"
+                 [class]="i === 0 ? 'ring-2 ring-accent-500 relative' : ''">
+              @if (i === 0) {
+                <span class="absolute -top-3 left-7 px-3 py-1 bg-accent-500 text-ink-950 text-xs font-bold uppercase tracking-wide rounded-full">
+                  Start here
+                </span>
+              }
+              <p class="text-accent-700 font-semibold text-xs uppercase tracking-wider mb-3">
+                {{ service.stage }}
+              </p>
+              <h3 class="text-xl font-bold text-ink-900 mb-3">{{ service.title }}</h3>
+              <p class="text-ink-600 text-[15px] leading-relaxed mb-7">{{ service.description }}</p>
+              <a routerLink="/services" [fragment]="service.id"
+                 class="mt-auto inline-flex items-center text-accent-700 font-semibold hover:text-accent-800 transition-colors text-[15px] group">
+                {{ service.linkLabel }}
+                <svg class="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <app-cta />
   `,
 })
 export default class HomePageComponent {
-  skills = [
+  legalName = site.legalName;
+  apps = apps;
+
+  services = [
     {
-      emoji: '///',
-      title: 'Angular & Frontend',
-      description: 'Building dynamic SPAs with Angular, creating reusable component libraries and responsive interfaces.',
+      id: 'assessment',
+      stage: 'Step one',
+      title: 'Inventory Data Health Check',
+      description:
+        'A short, self-contained assessment of where the data drifts and what the legacy tool is costing. It ends in a written plan you keep.',
+      linkLabel: 'What the health check covers',
     },
     {
-      emoji: '{;}',
-      title: '.NET & Backend',
-      description: 'Designing robust APIs, microservices, and scalable back-end systems with C# and .NET.',
+      id: 'migration',
+      stage: 'The main offer',
+      title: 'Retire One Legacy Inventory Tool',
+      description:
+        'One aging tool, replaced. The new system runs side by side with the old one until an agreed switch-off date.',
+      linkLabel: 'How a retirement runs',
     },
     {
-      emoji: '>>>',
-      title: 'Infrastructure & DevOps',
-      description: 'Infrastructure as Code, CI/CD pipelines, and cloud deployments for production-ready applications.',
+      id: 'fractional',
+      stage: 'For integrators',
+      title: 'Embedded for Integrators',
+      description:
+        "Senior .NET and Angular depth on your team's inventory, ERP or field-system project, working remotely.",
+      linkLabel: 'What this looks like',
     },
   ];
 }

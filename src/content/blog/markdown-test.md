@@ -48,8 +48,8 @@ Table
 
 ```javascript
 const object = {
-  name: "mattv",
-  getName: () => "matthew verry",
+  name: "lyra",
+  getName: () => "Lyra",
 };
 ```
 
