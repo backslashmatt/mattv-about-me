@@ -1,8 +1,23 @@
 import 'zone.js/node';
-import '@angular/platform-server/init';
-import { render } from '@analogjs/router/server';
-
+import { enableProdMode } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { renderApplication } from '@angular/platform-server';
 import { AppComponent } from './app/app.component';
-import { config } from './app/app.config.server';
+import { appConfig } from './app/app.config';
 
-export default render(AppComponent, config);
+enableProdMode();
+
+const bootstrap = () => bootstrapApplication(AppComponent, appConfig);
+
+export default async function render(
+  url: string,
+  document: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  _options?: any
+) {
+  const html = await renderApplication(bootstrap, {
+    document,
+    url,
+  });
+  return html;
+}
